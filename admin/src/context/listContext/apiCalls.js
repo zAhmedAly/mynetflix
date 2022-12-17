@@ -13,15 +13,16 @@ import {
 
 const axiosInstance = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
-  headers: {
-    token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-  },
 });
 
 export const getLists = async (dispatch) => {
   dispatch(getListsStart());
   try {
-    const res = await axiosInstance.get("/lists");
+    const res = await axiosInstance.get("/lists", {
+      headers: {
+        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+      },
+    });
     dispatch(getListsSuccess(res.data));
   } catch (err) {
     dispatch(getListsFailure());
