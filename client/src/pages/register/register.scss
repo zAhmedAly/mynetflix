@@ -1,12 +1,11 @@
 .register {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(
-      to bottom,
+  background: radial-gradient(circle,
       rgba(0, 0, 0, 0) 0%,
       rgba(0, 0, 0, 1) 100%
     ),
-    url("https://cdn.hipwallpaper.com/i/98/21/dUyCkp.jpg");
+    url("http://localhost:3000/img/mfbackground.jpg");
   background-size: cover;
   position: relative;
 
@@ -25,8 +24,8 @@
         background-color: red;
         border: none;
         color: white;
-        border-radius: 5px;
-        padding: 5px 15px;
+        border-radius: 3px;
+        padding: 8px 16px;
         font-size: 16px;
         font-weight: 500;
         cursor: pointer;
@@ -48,6 +47,7 @@
 
     h1 {
       font-size: 50px;
+      font-weight: 900;
     }
 
     h2 {
@@ -73,6 +73,7 @@
           height: 100%;
           border: none;
           padding: 0 10px;
+          font-size: 18px;
       }
 
       .registerButton{
@@ -81,7 +82,8 @@
           background-color: red;
           border: none;
           color: white;
-          font-size: 16px;
+          font-size: 20px;
+          font-weight: 900;
           cursor: pointer;
       }
     }

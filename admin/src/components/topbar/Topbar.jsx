@@ -8,7 +8,7 @@ export default function Topbar() {
       <div className="topbarWrapper">
         <div className="topLeft">
           <img className="mflogo" src="img/mflogo.png" alt="mflogo" />
-          <span className="logoTitle">Admin Panel</span>
+          <span className="logoTitle">Admin | Panel</span>
         </div>
         <div className="topRight">
           <div className="topbarIconContainer">
