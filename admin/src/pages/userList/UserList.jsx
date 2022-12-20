@@ -7,16 +7,18 @@ import { useState } from "react";
 
 export default function UserList() {
   const [data, setData] = useState(userRows);
+  const [pageSize, setPageSize] = useState(5);
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
   };
-  
+
   const columns = [
-    { field: "id", headerName: "ID", width: 90 },
+    { field: "id", headerName: "ID", width: 90, headerAlign: "center" },
     {
       field: "user",
       headerName: "User",
+      headerAlign: "center",
       width: 200,
       renderCell: (params) => {
         return (
@@ -27,20 +29,24 @@ export default function UserList() {
         );
       },
     },
-    { field: "email", headerName: "Email", width: 200 },
+    { field: "email", headerName: "Email", width: 200, headerAlign: "center" },
     {
       field: "status",
       headerName: "Status",
+      //headerClassName: "super-app-theme--header",
+      headerAlign: "center",
       width: 120,
     },
     {
       field: "transaction",
       headerName: "Transaction Volume",
       width: 160,
+      headerAlign: "center",
     },
     {
       field: "action",
       headerName: "Action",
+      headerAlign: "center",
       width: 150,
       renderCell: (params) => {
         return (
@@ -64,8 +70,12 @@ export default function UserList() {
         rows={data}
         disableSelectionOnClick
         columns={columns}
-        pageSize={8}
+        pageSize={pageSize}
+        onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+        rowsPerPageOptions={[5, 10, 15, 20]}
         checkboxSelection
+        pagination
+        //loading={isFetching}
       />
     </div>
   );

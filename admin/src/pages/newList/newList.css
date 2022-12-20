@@ -1,5 +1,7 @@
 .newProduct {
   flex: 4;
+  padding: 20px;
+  height: max-content;
 }
 
 .addProductForm {

@@ -1,7 +1,4 @@
-import Sidebar from "./components/sidebar/Sidebar";
-import Topbar from "./components/topbar/Topbar";
 import "./app.css";
-import Home from "./pages/home/Home";
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,21 +17,27 @@ import NewList from "./pages/newList/NewList";
 import MovieList from "./pages/movieList/MovieList";
 import { Movie } from "@material-ui/icons";
 import NewMovie from "./pages/newMovie/NewMovie";
+import Landing from "./pages/landing/Landing";
+import Sidebar from "./components/sidebar/Sidebar";
+import Topbar from "./components/topbar/Topbar";
 
 function App() {
   const { user } = useContext(AuthContext);
   return (
     <Router>
       <Switch>
+        <Route exact path="/">
+          {user ? <Landing /> : <Redirect to="/login" />}
+        </Route>
         <Route path="/login">{!user ? <Login /> : <Redirect to="/" />}</Route>
         {user && (
           <>
             <Topbar />
             <div className="container">
               <Sidebar />
-              <Route exact path="/">
+              {/* <Route exact path="/">
                 <Home />
-              </Route>
+              </Route> */}
               <Route path="/users">
                 <UserList />
               </Route>

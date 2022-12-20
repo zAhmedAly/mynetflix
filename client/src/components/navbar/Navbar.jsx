@@ -25,11 +25,7 @@ const Navbar = () => {
     <div className={isScrolled ? "navbar scrolled" : "navbar"}>
       <div className="container">
         <div className="left">
-          <img
-            // src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png"
-            src="img/movieflix.png"
-            alt=""
-          />
+          <img src="img/movieflix.png" alt="" />
           <Link to="/" className="link">
             <span>Homepage</span>
           </Link>
@@ -46,11 +42,7 @@ const Navbar = () => {
           <Search className="icon" />
           <span>{user.username}</span>
           <Notifications className="icon" />
-          <img
-            // src="https://images.pexels.com/photos/6899260/pexels-photo-6899260.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            src="img/profileImg.webp"
-            alt=""
-          />
+          <img src="img/profileImg.webp" alt="" />
           <div className="profile">
             <ArrowDropDown className="icon" />
             <div className="options">

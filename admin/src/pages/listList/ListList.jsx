@@ -2,13 +2,13 @@ import "./listList.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ListContext } from "../../context/listContext/ListContext";
 import { deleteList, getLists } from "../../context/listContext/apiCalls";
 
 export default function ListList() {
-  const { lists, dispatch } = useContext(ListContext);
-
+  const { lists, dispatch, isFetching } = useContext(ListContext);
+  const [pageSize, setPageSize] = useState(5);
   useEffect(() => {
     getLists(dispatch);
   }, [dispatch]);
@@ -18,13 +18,15 @@ export default function ListList() {
   };
 
   const columns = [
-    { field: "_id", headerName: "ID", width: 250 },
-    { field: "title", headerName: "title", width: 250 },
-    { field: "genre", headerName: "Genre", width: 150 },
-    { field: "type", headerName: "type", width: 150 },
+    { field: "_id", headerName: "ID", width: 250, headerAlign: "center" },
+    { field: "title", headerName: "Title", width: 250, headerAlign: "center" },
+    { field: "genre", headerName: "Genre", width: 150, headerAlign: "center" },
+    { field: "type", headerName: "Type", width: 150, headerAlign: "center" },
     {
       field: "action",
       headerName: "Action",
+      headerAlign: "center",
+
       width: 150,
       renderCell: (params) => {
         return (
@@ -32,10 +34,10 @@ export default function ListList() {
             <Link
               to={{ pathname: "/list/" + params.row._id, list: params.row }}
             >
-              <button className="productListEdit">Edit</button>
+              <button className="listListEdit">Edit</button>
             </Link>
             <DeleteOutline
-              className="productListDelete"
+              className="listListDelete"
               onClick={() => handleDelete(params.row._id)}
             />
           </>
@@ -45,14 +47,19 @@ export default function ListList() {
   ];
 
   return (
-    <div className="productList">
+    // style={{ height: 400, width: "100%" }}
+    <div className="listList">
       <DataGrid
         rows={lists}
         disableSelectionOnClick
         columns={columns}
-        pageSize={8}
+        pageSize={pageSize}
+        onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+        rowsPerPageOptions={[5, 10, 15, 20]}
         checkboxSelection
         getRowId={(r) => r._id}
+        pagination
+        loading={isFetching}
       />
     </div>
   );
