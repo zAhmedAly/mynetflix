@@ -21,6 +21,7 @@ export default function Login() {
         </div>
       </div>
       <form className="loginForm">
+        <h1 style={{ fontSize: "20px", fontWeight: "bold" }}>Admin Sign In</h1>
         <input
           type="text"
           placeholder="Email address"
