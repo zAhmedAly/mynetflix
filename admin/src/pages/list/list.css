@@ -12,7 +12,7 @@
 .productAddButton {
   width: 80px;
   border: none;
-  padding: 5px;
+  padding: 10px;
   background-color: teal;
   color: white;
   border-radius: 5px;
@@ -124,8 +124,9 @@
 }
 
 .productButton {
+  width: 80px;
   border: none;
-  padding: 5px;
+  padding: 10px;
   border-radius: 5px;
   background-color: darkblue;
   color: white;

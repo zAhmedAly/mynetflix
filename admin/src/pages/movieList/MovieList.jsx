@@ -52,10 +52,16 @@ export default function MovieList() {
 
       width: 120,
       renderCell: (params) => {
+        console.log("params = ", params);
         return (
           <>
             <Link
-              to={{ pathname: "/movie/" + params.row._id, movie: params.row }}
+              to={{
+                pathname: "/movie/" + params.row._id,
+                state: {
+                  movie: params.row,
+                },
+              }}
             >
               <button className="movieListEdit">Edit</button>
             </Link>

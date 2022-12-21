@@ -4,44 +4,45 @@ import { Publish } from "@material-ui/icons";
 
 export default function Movie() {
   const location = useLocation();
-  const movie = location.movie;
+  const { movie } = location.state;
+
   return (
-    <div className="product">
-      <div className="productTitleContainer">
-        <h1 className="productTitle">Movie</h1>
-        <Link to="/newproduct">
-          <button className="productAddButton">Create</button>
+    <div className="movie">
+      <div className="movieTitleContainer">
+        <h1 className="movieTitle">Edit Movie</h1>
+        <Link to="/newMovie">
+          <button className="movieAddButton">Create</button>
         </Link>
       </div>
-      <div className="productTop">
-        <div className="productTopRight">
-          <div className="productInfoTop">
-            <img src={movie.img} alt="" className="productInfoImg" />
-            <span className="productName">{movie.title}</span>
+      <div className="movieTop">
+        <div className="movieTopRight">
+          <div className="movieInfoTop">
+            <img src={movie.img} alt="" className="movieInfoImg" />
+            <span className="movieName">{movie.title}</span>
           </div>
-          <div className="productInfoBottom">
-            <div className="productInfoItem">
-              <span className="productInfoKey">id:</span>
-              <span className="productInfoValue">{movie._id}</span>
+          <div className="movieInfoBottom">
+            <div className="movieInfoItem">
+              <span className="movieInfoKey">id:</span>
+              <span className="movieInfoValue">{movie._id}</span>
             </div>
-            <div className="productInfoItem">
-              <span className="productInfoKey">genre:</span>
-              <span className="productInfoValue">{movie.genre}</span>
+            <div className="movieInfoItem">
+              <span className="movieInfoKey">genre:</span>
+              <span className="movieInfoValue">{movie.genre}</span>
             </div>
-            <div className="productInfoItem">
-              <span className="productInfoKey">year:</span>
-              <span className="productInfoValue">{movie.year}</span>
+            <div className="movieInfoItem">
+              <span className="movieInfoKey">year:</span>
+              <span className="movieInfoValue">{movie.year}</span>
             </div>
-            <div className="productInfoItem">
-              <span className="productInfoKey">limit:</span>
-              <span className="productInfoValue">{movie.limit}</span>
+            <div className="movieInfoItem">
+              <span className="movieInfoKey">limit:</span>
+              <span className="movieInfoValue">{movie.limit}</span>
             </div>
           </div>
         </div>
       </div>
-      <div className="productBottom">
-        <form className="productForm">
-          <div className="productFormLeft">
+      <div className="movieBottom">
+        <form className="movieForm">
+          <div className="movieFormLeft">
             <label>Movie Title</label>
             <input type="text" placeholder={movie.title} />
             <label>Year</label>
@@ -55,19 +56,15 @@ export default function Movie() {
             <label>Video</label>
             <input type="file" placeholder={movie.video} />
           </div>
-          <div className="productFormRight">
-            <div className="productUpload">
-              <img
-                src={movie.img}
-                alt=""
-                className="productUploadImg"
-              />
-              <label for="file">
+          <div className="movieFormRight">
+            <div className="movieUpload">
+              <img src={movie.img} alt="" className="movieUploadImg" />
+              <label htmlFor="file">
                 <Publish />
               </label>
               <input type="file" id="file" style={{ display: "none" }} />
             </div>
-            <button className="productButton">Update</button>
+            <button className="movieButton">Update</button>
           </div>
         </form>
       </div>
