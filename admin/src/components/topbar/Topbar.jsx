@@ -1,11 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import "./topbar.css";
-import {
-  ArrowDropDown,
-  NotificationsNone,
-  Language,
-  Settings,
-} from "@material-ui/icons";
+import { NotificationsNone, Language, Settings } from "@material-ui/icons";
 import { useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/authContext/AuthContext";
 
@@ -15,6 +10,8 @@ export default function Topbar() {
   const { dispatch } = useContext(AuthContext);
 
   const history = useHistory();
+
+  const profileRef = useRef();
 
   const handleLogot = (e) => {
     e.preventDefault();
@@ -41,9 +38,9 @@ export default function Topbar() {
           <div className="topbarIconContainer">
             <Settings style={{ fontSize: "1.875rem" }} />
           </div>
-          <img src="img/profileImg.webp" alt="" className="topAvatar" />
-          <div className="profile">
-            <ArrowDropDown className="icon" />
+          <img src="../../img/profileImg.webp" alt="" className="topAvatar" />
+          <div className="profile" ref={profileRef}>
+            {/* <ArrowDropDown className="icon" /> */}
             <div className="options">
               <span className="option">Settings</span>
               <span className="option" onClick={handleLogot}>

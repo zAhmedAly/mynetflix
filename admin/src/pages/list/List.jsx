@@ -1,54 +1,78 @@
-import { Link, useLocation } from "react-router-dom";
 import "./list.css";
-// import { Publish } from "@material-ui/icons";
+import { useContext } from "react";
+import { Link, useParams } from "react-router-dom";
+import { ListContext } from "../../context/listContext/ListContext";
 
 export default function List() {
-  const location = useLocation();
-  const { list } = location.state;
+  const params = useParams();
+  const { lists } = useContext(ListContext);
+  const list = lists.filter((list) => list._id === params.listId)[0];
+
+  // console.log("lists = ", lists);
+  // console.log("params = ", params);
+  // console.log("list = ", list);
+
+  // const location = useLocation();
+  // const { list } = location.state;
+
   return (
-    <div className="product">
-      <div className="productTitleContainer">
-        <h1 className="productTitle">Edit List</h1>
-        <Link to="/newList">
-          <button className="productAddButton">Create</button>
-        </Link>
-      </div>
-      <div className="productTop">
-        <div className="productTopRight">
-          <div className="productInfoTop">
-            <span className="productName">{list.title}</span>
+    <div className="list">
+      {list ? (
+        <>
+          <div className="listTitleContainer">
+            <h1 className="listTitle">Edit List</h1>
+            <Link to="/newList">
+              <button className="listAddButton">Create</button>
+            </Link>
           </div>
-          <div className="productInfoBottom">
-            <div className="productInfoItem">
-              <span className="productInfoKey">id:</span>
-              <span className="productInfoValue">{list._id}</span>
-            </div>
-            <div className="productInfoItem">
-              <span className="productInfoKey">genre:</span>
-              <span className="productInfoValue">{list.genre}</span>
-            </div>
-            <div className="productInfoItem">
-              <span className="productInfoKey">type:</span>
-              <span className="productInfoValue">{list.type}</span>
+          <div className="listTop">
+            <div className="listTopRight">
+              <div className="listInfoTop">
+                <span className="listName">{list.title}</span>
+              </div>
+              <div className="listInfoBottom">
+                <div className="listInfoItem">
+                  <span className="listInfoKey">id:</span>
+                  <span className="listInfoValue">{list._id}</span>
+                </div>
+                <div className="listInfoItem">
+                  <span className="listInfoKey">genre:</span>
+                  <span className="listInfoValue">{list.genre}</span>
+                </div>
+                <div className="listInfoItem">
+                  <span className="listInfoKey">type:</span>
+                  <span className="listInfoValue">{list.type}</span>
+                </div>
+              </div>
             </div>
           </div>
+          <div className="listBottom">
+            <form className="listForm">
+              <div className="listFormLeft">
+                <label>List Title</label>
+                <input type="text" placeholder={list.title} />
+                <label>Type</label>
+                <input type="text" placeholder={list.type} />
+                <label>Genre</label>
+                <input type="text" placeholder={list.genre} />
+              </div>
+              <div className="listFormRight">
+                <button className="listButton">Update</button>
+              </div>
+            </form>
+          </div>
+        </>
+      ) : (
+        <div className="errorContainer">
+          <h2 className="movieTitle">
+            Something went wrong to retreive list information
+          </h2>
+          <br></br>
+          <Link to="/movies" className="link">
+            <h3 style={{ color: "blue" }}>Please go back to Lists</h3>
+          </Link>
         </div>
-      </div>
-      <div className="productBottom">
-        <form className="productForm">
-          <div className="productFormLeft">
-            <label>List Title</label>
-            <input type="text" placeholder={list.title} />
-            <label>Type</label>
-            <input type="text" placeholder={list.type} />
-            <label>Genre</label>
-            <input type="text" placeholder={list.genre} />
-          </div>
-          <div className="productFormRight">
-            <button className="productButton">Update</button>
-          </div>
-        </form>
-      </div>
+      )}
     </div>
   );
 }

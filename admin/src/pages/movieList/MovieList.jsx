@@ -52,7 +52,7 @@ export default function MovieList() {
 
       width: 120,
       renderCell: (params) => {
-        console.log("params = ", params);
+        //  console.log("params = ", params);
         return (
           <>
             <Link

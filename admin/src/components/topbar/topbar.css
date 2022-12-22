@@ -68,14 +68,14 @@
 }
 
 .topAvatar {
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   cursor: pointer;
 }
 
 .profile {
-  display: none;
+  /* display: none; */
   position: relative;
 }
 
@@ -84,15 +84,16 @@
   flex-direction: column;
   position: absolute;
   background-color: var(--main-color);
-  border-radius: 5px;
+  border-radius: 3px;
   right: 0;
-  top: 40px;
+  top: 15px;
 }
 
 .option {
-  padding: 10px;
+  font-size: 12px;
+  padding: 8px;
   cursor: pointer;
-  color: wheat;
+  color: white;
 }
 
 /* &:hover {
