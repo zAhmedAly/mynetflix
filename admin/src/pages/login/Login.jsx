@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { login } from "../../context/authContext/apiCalls";
 import { AuthContext } from "../../context/authContext/AuthContext";
 import "./login.css";
@@ -6,12 +6,33 @@ import "./login.css";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { isFetching, dispatch } = useContext(AuthContext);
+  const [msg, setMsg] = useState(null);
+  const { isFetching, dispatch, error } = useContext(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
-    login({ email, password }, dispatch);
+    if (!email || !password) {
+      setMsg("Email & Password are required");
+      setTimeout(() => {
+        setMsg(null);
+      }, 3000);
+    } else {
+      login({ email, password }, dispatch);
+    }
   };
+
+  useEffect(() => {
+    if (error) {
+      setMsg(error);
+      setTimeout(() => {
+        setMsg(null);
+      }, 3000);
+    }
+
+    return () => {
+      setMsg(null);
+    };
+  }, [error]);
 
   return (
     <div className="login">
@@ -34,6 +55,8 @@ export default function Login() {
           className="loginInput"
           onChange={(e) => setPassword(e.target.value)}
         />
+        {msg && <p style={{ color: "red" }}> {msg} </p>}
+
         <button
           className="loginButton"
           onClick={handleLogin}

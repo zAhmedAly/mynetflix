@@ -38,14 +38,14 @@ export default function Register() {
     <div className="register">
       <div className="top">
         <div className="wrapper">
-          <img className="logo" src="img/movieflix.png" alt="" />
+          <img className="logo" src="../../img/movieflix.png" alt="" />
           <button className="loginButton" onClick={handleSignIn}>
             Sign In
           </button>
         </div>
       </div>
       <div className="container">
-        <h1>Unlimited movies, TV shows, and more.</h1>
+        <h1>Unlimited movies, TV shows & more.</h1>
         <h2>Watch anywhere. Cancel anytime.</h2>
         <p>
           Ready to watch? Enter your email to create or restart your membership.

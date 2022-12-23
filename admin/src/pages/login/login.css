@@ -1,6 +1,6 @@
 .login {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background: radial-gradient(
       circle,
       rgba(0, 0, 0, 0) -20%,
@@ -10,48 +10,44 @@
   background-size: cover;
   position: relative;
   color: white;
+  display: flex;
+  flex-direction: column;
 }
 
 .top {
+  height: 70px;
 }
 .wrapper {
-  padding: 20px 50px;
+  padding: 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 .logo {
-  height: 60px;
+  height: 40px;
 }
 
 .loginForm {
-  width: 250px;
-  height: 200px;
-  padding: 30px;
+  margin: auto;
+  width: 300px;
+  height: max-content;
+  padding: 16px;
   border-radius: 5px;
+  background-color: var(--main-color);
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  background-color: var(--main-color);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
+  justify-content: space-between;
+  gap: 16px;
 }
 
 .loginInput {
-  /* margin-bottom: 10px;
-  padding: 10px;
-  color: black; */
   font-size: 16px;
-
-  height: 40px;
+  height: 35px;
   border-radius: 5px;
   background-color: rgb(99, 99, 99);
   color: white;
   padding-left: 10px;
+  outline: none;
 }
 
 .loginInput::placeholder {
@@ -59,7 +55,7 @@
 }
 
 .loginButton {
-  height: 40px;
+  height: 35px;
   border-radius: 5px;
   background-color: red;
   color: white;

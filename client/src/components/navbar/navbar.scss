@@ -14,35 +14,46 @@
   }
 
   .container {
-    padding: 0px 50px;
+    padding: 0px 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: 70px;
 
+    @include mobile {
+      justify-content: unset;
+        flex-direction: column;
+        padding: 0;
+      }
+
     .left {
       display: flex;
       align-items: center;
+      gap: 16px;
 
-      .logo {
-        height: 45px;
-      }
-      img {
+      .smLogo {
         height: 35px;
-        margin-right: 45px;
+        display: none;
+        @include tablet {
+            display: inline-block;
+          }
+      }
+      .lgLogo {
+        height: 35px;
+        // margin-right: 45px;
 
-        @include mobile {
+        @include tablet {
           display: none;
         }
       }
 
       span {
-        margin-right: 20px;
+        // margin-right: 20px;
         cursor: pointer;
 
-        @include tablet {
-          display: none;
-        }
+        // @include tablet {
+        //   display: none;
+        // }
 
         &.navbarmainLinks {
           @include tablet {

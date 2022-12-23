@@ -25,10 +25,20 @@ const Navbar = () => {
     <div className={isScrolled ? "navbar scrolled" : "navbar"}>
       <div className="container">
         <div className="left">
-          {/* <img src="../../img/mflogo512.png" alt="mflogo" className="logo" /> */}
-          <img src="../../img/movieflix.png" alt="movieflix" />
           <Link to="/" className="link">
-            <span>Homepage</span>
+            <img
+              src="../../img/mflogo512.png"
+              alt="mflogo"
+              className="smLogo"
+            />
+          </Link>
+          <Link to="/" className="link">
+            {/* <span>Homepage</span> */}
+            <img
+              src="../../img/movieflix.png"
+              alt="movieflix"
+              className="lgLogo"
+            />
           </Link>
           <Link to="/series" className="link">
             <span className="navbarmainLinks">Series</span>
@@ -36,13 +46,13 @@ const Navbar = () => {
           <Link to="/movies" className="link">
             <span className="navbarmainLinks">Movies</span>
           </Link>
-          <span>New and Popular</span>
+          <span>New|Popular</span>
           <span>My List</span>
         </div>
         <div className="right">
           <Search className="icon" />
-          <span>{user.username}</span>
           <Notifications className="icon" />
+          <span>{user.username}</span>
           <img src="img/profileImg.webp" alt="" />
           <div className="profile">
             <ArrowDropDown className="icon" />

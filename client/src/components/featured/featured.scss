@@ -38,11 +38,11 @@
     width: 35%;
     position: absolute;
     left: 50px;
-    bottom: 30px;
+    bottom: 10%;
     color: white;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 
     img {
       width: 40vw;
