@@ -51,14 +51,14 @@ export default function Register() {
           Ready to watch? Enter your email to create or restart your membership.
         </p>
         {!email ? (
-          <div className="input">
+          <div className="input1">
             <input type="email" placeholder="Email address" ref={emailRef} />
             <button className="registerButton" onClick={handleStart}>
               Get Started
             </button>
           </div>
         ) : (
-          <form className="input">
+          <form className="input2">
             <input type="username" placeholder="username" ref={usernameRef} />
             <input type="password" placeholder="password" ref={passwordRef} />
             <button className="registerButton" onClick={handleFinish}>

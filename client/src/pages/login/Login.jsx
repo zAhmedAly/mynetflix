@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { login } from "../../authContext/apiCalls";
 import { AuthContext } from "../../authContext/AuthContext";
@@ -8,11 +8,33 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const history = useHistory();
   const [password, setPassword] = useState("");
-  const { dispatch } = useContext(AuthContext);
+  const [msg, setMsg] = useState(null);
+
+  const { isFetching, dispatch, error } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (error) {
+      setMsg(error);
+      setTimeout(() => {
+        setMsg(null);
+      }, 3000);
+    }
+
+    return () => {
+      setMsg(null);
+    };
+  }, [error]);
 
   const handleLogin = (e) => {
     e.preventDefault();
-    login({ email, password }, dispatch);
+    if (!email || !password) {
+      setMsg("Email & Password are required");
+      setTimeout(() => {
+        setMsg(null);
+      }, 3000);
+    } else {
+      login({ email, password }, dispatch);
+    }
   };
 
   const handleRegister = () => {
@@ -39,10 +61,26 @@ export default function Login() {
             placeholder="Password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="loginButton" onClick={handleLogin}>
+          <p
+            style={{
+              color: "red",
+              height: "20px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            {" "}
+            {msg}{" "}
+          </p>
+
+          <button
+            className="loginButton"
+            onClick={handleLogin}
+            disabled={isFetching}
+          >
             Sign In
           </button>
-          <span>
+          <span style={{ marginTop: "32px" }}>
             New to Netflix?{" "}
             <b style={{ cursor: "pointer" }} onClick={handleRegister}>
               Sign up now.
@@ -50,7 +88,7 @@ export default function Login() {
           </span>
           <small>
             This page is protected by Google reCAPTCHA to ensure you're not a
-            bot. <b>Learn more</b>.
+            bot. <b style={{ color: "#0071eb" }}>Learn more</b>.
           </small>
         </form>
       </div>

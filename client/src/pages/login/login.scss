@@ -1,14 +1,16 @@
 .login {
   width: 100vw;
   min-height: 100vh;
-  background: radial-gradient(circle,
-        rgba(0, 0, 0, 0) -20%,
-          rgba(0, 0, 0, 1) 130%),
-      url(../../img/mfbackground.jpg);
+  background: radial-gradient(
+      circle,
+      rgba(0, 0, 0, 0) -20%,
+      rgba(0, 0, 0, 1) 130%
+    ),
+    url(../../img/mfbackground.jpg);
   background-size: cover;
   position: relative;
   display: flex;
-flex-direction: column;
+  flex-direction: column;
   .top {
     height: 70px;
     .wrapper {
@@ -32,22 +34,20 @@ flex-direction: column;
     color: white;
 
     form {
-      width: 300px;
-      height: max-content;
-      padding: 16px;
-      border-radius: 5px;
+      max-width: 350px;
+      min-height: 515px;
+      padding: 32px;
+      border-radius: 8px;
       background-color: var(--main-color);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 16px;
-      
+      // gap: 16px;
 
-     
       input {
-        height: 35px;
+        height: 45px;
         border-radius: 5px;
-        background-color: rgb(99, 99, 99);
+        background: #333;
         color: white;
         padding-left: 10px;
         outline: none;
@@ -58,7 +58,7 @@ flex-direction: column;
       }
 
       button {
-        height: 35px;
+        height: 45px;
         border-radius: 5px;
         background-color: red;
         color: white;
@@ -68,9 +68,9 @@ flex-direction: column;
         cursor: pointer;
       }
 
-     
-      span {
-        color: lightgray;
+      span,
+      small {
+        color: #737373;
         b {
           color: white;
         }

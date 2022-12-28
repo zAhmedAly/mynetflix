@@ -1,30 +1,14 @@
 @import "../../app.scss";
 
 .featured {
-  height: 76vh;
+  height: 75vh;
   position: relative;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  .category {
-    position: absolute;
-    top: 80px;
-    left: 50px;
-    font-size: 30px;
-    font-weight: 500;
-    color: white;
-    display: flex;
-    align-items: center;
-
-    select {
-      cursor: pointer;
-      background-color: var(--main-color);
-      border: 1px solid white;
-      color: white;
-      margin-left: 20px;
-      padding: 5px;
-    }
-  }
-
-  #genre{
+  #genre {
     z-index: 2;
   }
 
@@ -34,57 +18,148 @@
     object-fit: cover;
   }
 
+  .hero {
+    height: 100%;
+    width: 100%;
+  }
   .info {
-    width: 35%;
     position: absolute;
-    left: 50px;
-    bottom: 10%;
+    left: 0;
+    bottom: 0;
+    min-width: 350px;
+    max-width: 800px;
+    width: 100%;
+    height: 100%;
     color: white;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    // justify-content: center;
+    // gap: 100px;
+    padding: 16px 32px;
 
-    img {
-      width: 40vw;
-      object-fit: cover;
-      margin-top: 80px;
+    background-image: linear-gradient(
+      to left,
+      transparent 0%,
+      rgba(59, 59, 59, 0.5) 90%
+    );
+
+    // background-image: linear-gradient(
+    //   90deg,
+    //   #000000 0%,
+    //   hsla(0deg, 0%, 0%, 0.99) 10%,
+    //   hsla(0deg, 0%, 0%, 0.98) 20%,
+    //   hsla(0deg, 0%, 0%, 0.97) 25%,
+    //   hsla(0deg, 0%, 0%, 0.95) 35%,
+    //   hsla(0deg, 0%, 0%, 0.94) 40%,
+    //   hsla(0deg, 0%, 0%, 0.92) 45%,
+    //   hsla(0deg, 0%, 0%, 0.9) 50%,
+    //   hsla(0deg, 0%, 0%, 0.87) 55%,
+    //   hsla(0deg, 0%, 0%, 0.82) 60%,
+    //   hsla(0deg, 0%, 0%, 0.75) 65%,
+    //   hsla(0deg, 0%, 0%, 0.63) 70%,
+    //   hsla(0deg, 0%, 0%, 0.45) 75%,
+    //   hsla(0deg, 0%, 0%, 0.27) 80%,
+    //   hsla(0deg, 0%, 0%, 0.15) 85%,
+    //   hsla(0deg, 0%, 0%, 0.08) 90%,
+    //   hsla(0deg, 0%, 0%, 0.03) 95%,
+    //   hsla(0deg, 0%, 0%, 0) 100%
+    // );
+
+    @include mobile {
+      background-image: linear-gradient(
+        to left,
+        transparent 0%,
+        rgba(59, 59, 59, 0.5) 100%
+      );
     }
 
-    .desc {
-      margin: 20px 0px;
+    .category {
+      flex: 1;
+      height: 100%;
+      width: 50%;
+      font-size: 30px;
+      font-weight: 500;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      // padding: 16px 32px;
+      @include tablet {
+        font-size: 20px;
+        width: 100%;
+      }
 
-      @include mobile {
-        width: 60vw;
+      span {
+        // flex: 1;
+        text-align: right;
+        width: 90px;
+      }
+      select {
+        // flex: 1;
+        cursor: pointer;
+        background-color: var(--main-color);
+        border: 1px solid white;
+        color: white;
+        padding: 5px;
       }
     }
 
-    .buttons {
+    .information {
+      flex: 1;
       display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 20px;
+      // padding: 16px 32px;
 
-      button {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
+      img {
+        height: auto;
+        width: 100%;
+        object-fit: cover;
+      }
+      .desc {
+        width: 50%;
+        font-size: 14px;
+        font-weight: 700;
+        color: white;
+        // mix-blend-mode: difference;
+
+        @include mobile {
+          width: 100%;
+        }
+      }
+
+      .buttons {
         display: flex;
         align-items: center;
-        justify-content: center;
-        font-size: 18px;
-        font-weight: 500;
-        margin-right: 10px;
-        cursor: pointer;
+        gap: 16px;
 
-        &.play {
-          background-color: white;
-          color: var(--main-color);
-        }
+        button {
+          padding: 6px 12px;
+          border: none;
+          border-radius: 5px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 16px;
+          font-weight: 500;
+          cursor: pointer;
+          @include mobile {
+            padding: 4px 10px;
+          }
+          &.play {
+            background-color: white;
+            color: var(--main-color);
+          }
 
-        &.more {
-          background-color: gray;
-          color: white;
-        }
+          &.more {
+            background-color: gray;
+            color: white;
+          }
 
-        span {
-          margin-left: 5px;
+          span {
+            margin-left: 5px;
+          }
         }
       }
     }

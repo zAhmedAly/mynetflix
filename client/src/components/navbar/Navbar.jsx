@@ -31,9 +31,8 @@ const Navbar = () => {
               alt="mflogo"
               className="smLogo"
             />
-          </Link>
-          <Link to="/" className="link">
-            {/* <span>Homepage</span> */}
+            {/* </Link>
+          <Link to="/" className="link"> */}
             <img
               src="../../img/movieflix.png"
               alt="movieflix"

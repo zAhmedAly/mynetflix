@@ -2,10 +2,12 @@
 .register {
   width: 100vw;
   height: 100vh;
-  background: radial-gradient(circle,
-        rgba(0, 0, 0, 0) -20%,
-        rgba(0, 0, 0, 1) 130%),
-      url(../../img/mfbackground.jpg);
+  background: radial-gradient(
+      circle,
+      rgba(0, 0, 0, 0) -20%,
+      rgba(0, 0, 0, 1) 130%
+    ),
+    url(../../img/mfbackground.jpg);
   background-size: cover;
   position: relative;
   display: flex;
@@ -37,13 +39,6 @@
   }
 
   .container {
-    // width: 100%;
-    // height: 100%;
-    // position: absolute;
-    // top: 0;
-    // left: 0;
-    // bottom: 0;
-    // right: 0;
     margin: auto;
     display: flex;
     flex-direction: column;
@@ -65,23 +60,23 @@
       font-size: 20px;
     }
 
-        @include tablet {
-          h1 {
-              font-size: 32px;
-              font-weight: 700;
-            }
-          
-            h2 {
-              margin: 16px 0;
-            }
-          
-            p {
-              font-size: 16px;
-            }
-        }
+    @include tablet {
+      h1 {
+        font-size: 32px;
+        font-weight: 700;
+      }
 
-    .input {
-      width: 300px;
+      h2 {
+        margin: 16px 0;
+      }
+
+      p {
+        font-size: 16px;
+      }
+    }
+
+    .input1 {
+      max-width: 370px;
       background-color: white;
       display: flex;
       align-items: center;
@@ -90,25 +85,61 @@
       height: 40px;
       border-radius: 5px;
 
-      input{
-          height: 100%;
-           border: none;
-          padding: 0 8px;
-          font-size: 16px;   
-          border-style: none;    
-          outline: none;
+      input {
+        height: 100%;
+        border: none;
+        padding: 0 8px;
+        font-size: 16px;
+        border-style: none;
+        outline: none;
+        width: 65%;
       }
 
-      .registerButton{
-          height: 100%;
-          // width: max-content;
-          background-color: red;
-          border: none;
-          color: white;
-          font-size: 16px;
-          font-weight: 700;
-          cursor: pointer;
-          padding: 4px 8px;
+      .registerButton {
+        height: 100%;
+        // width: max-content;
+        background-color: red;
+        border: none;
+        color: white;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        padding: 4px 8px;
+        width: 35%;
+      }
+    }
+
+    .input2 {
+      width: 350px;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+      height: 40px;
+      border-radius: 5px;
+
+      input {
+        height: 100%;
+        border: none;
+        padding: 0 8px;
+        font-size: 16px;
+        border-style: none;
+        outline: none;
+        width: 40%;
+      }
+
+      .registerButton {
+        height: 100%;
+        // width: max-content;
+        background-color: red;
+        border: none;
+        color: white;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        padding: 4px 8px;
+        width: 20%;
       }
     }
   }
