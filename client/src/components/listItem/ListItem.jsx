@@ -5,33 +5,11 @@ import {
   ThumbUpAltOutlined,
   ThumbDownOutlined,
 } from "@material-ui/icons";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function ListItem({ index, item }) {
+export default function ListItem({ index, movie }) {
   const [isHovered, setIsHovered] = useState(false);
-  const [movie, setMovie] = useState({});
-  const axiosInstance = axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
-    headers: {
-      token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-    },
-  });
-
-  const getMovie = async () => {
-    try {
-      const res = await axiosInstance.get("/movies/find/" + item);
-      setMovie(res.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(() => {
-    getMovie();
-    // eslint-disable-next-line
-  }, [item]);
 
   return (
     <Link to={{ pathname: "/watch", movie: movie }}>
@@ -66,3 +44,25 @@ export default function ListItem({ index, item }) {
     </Link>
   );
 }
+
+// const [movie, setMovie] = useState({});
+// const axiosInstance = axios.create({
+//   baseURL: process.env.REACT_APP_API_URL,
+//   headers: {
+//     token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+//   },
+// });
+
+// const getMovie = async () => {
+//   try {
+//     const res = await axiosInstance.get("/movies/find/" + item);
+//     setMovie(res.data);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
+
+// useEffect(() => {
+//   getMovie();
+//   // eslint-disable-next-line
+// }, [item]);

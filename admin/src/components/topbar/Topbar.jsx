@@ -1,7 +1,7 @@
 import React, { useContext, useRef } from "react";
 import "./topbar.css";
 import { NotificationsNone, Language, Settings } from "@material-ui/icons";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/authContext/AuthContext";
 
 import { logout } from "../../context/authContext/AuthActions";
@@ -22,10 +22,13 @@ export default function Topbar() {
   return (
     <div className="topbar">
       <div className="topbarWrapper">
-        <div className="topLeft">
-          <img className="mflogo" src="../../img/mflogo.png" alt="mflogo" />
-          <span className="logoTitle">Admin | Panel</span>
-        </div>
+        <Link to="/" className="link">
+          <div className="topLeft">
+            <img className="mflogo" src="../../img/mflogo.png" alt="mflogo" />
+            <span className="logoTitle">Admin | Panel</span>
+          </div>
+        </Link>
+
         <div className="topRight">
           <div className="topbarIconContainer">
             <NotificationsNone style={{ fontSize: "1.875rem" }} />

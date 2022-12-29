@@ -1,6 +1,19 @@
+@import "../../app.scss";
+
 .watch {
   width: 100vw;
   height: 100vh;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background: radial-gradient(
+      circle,
+      rgba(0, 0, 0, 0) -20%,
+      rgba(0, 0, 0, 1) 130%
+    ),
+    url(../../img/mfbackground.jpg);
 
   .back {
     display: flex;
@@ -14,8 +27,14 @@
   }
 
   .video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    width: 85%;
+    height: max-content;
+    object-fit: unset;
+    border: 5px solid white;
+
+    @include tablet {
+      width: 85%;
+      height: 95%;
+    }
   }
 }

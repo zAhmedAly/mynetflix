@@ -41,30 +41,42 @@ export default function Login() {
           <img className="logo" src="img/movieflix.png" alt="" />
         </div>
       </div>
-      <form className="loginForm">
-        <h1 style={{ fontSize: "20px", fontWeight: "bold" }}>Admin Sign In</h1>
-        <input
-          type="text"
-          placeholder="Email address"
-          className="loginInput"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          className="loginInput"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        {msg && <p style={{ color: "red" }}> {msg} </p>}
+      <div className="formContainer">
+        <form className="loginForm">
+          <h1>Admin Login</h1>
+          <input
+            type="text"
+            placeholder="Email address"
+            className="loginInput"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="loginInput"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <p
+            style={{
+              color: "red",
+              height: "20px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            {" "}
+            {msg}{" "}
+          </p>
 
-        <button
-          className="loginButton"
-          onClick={handleLogin}
-          disabled={isFetching}
-        >
-          Login
-        </button>
-      </form>
+          <button
+            className="loginButton"
+            onClick={handleLogin}
+            disabled={isFetching}
+          >
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

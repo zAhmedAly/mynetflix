@@ -25,7 +25,7 @@ const App = () => {
         </Route>
         <Route path="/login">{!user ? <Login /> : <Redirect to="/" />}</Route>
         {user && (
-          <>
+          <Switch>
             <Route path="/movies">
               <Home type="movie" />
             </Route>
@@ -35,7 +35,7 @@ const App = () => {
             <Route path="/watch">
               <Watch />
             </Route>
-          </>
+          </Switch>
         )}
       </Switch>
     </Router>

@@ -10,6 +10,8 @@ const cors = require("cors");
 
 dotenv.config();
 
+PORT = process.env.PORT || 8800;
+
 mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
@@ -21,9 +23,7 @@ mongoose
     console.error(err);
   });
 
-app.use(
-  cors()
-);
+app.use(cors());
 
 app.use(express.json());
 
@@ -32,6 +32,6 @@ app.use("/api/users", userRoute);
 app.use("/api/movies", movieRoute);
 app.use("/api/lists", listRoute);
 
-app.listen(8800, () => {
-  console.log("Backend server is running!");
+app.listen(PORT, () => {
+  console.log(`Backend server is running! at port ${PORT}`);
 });

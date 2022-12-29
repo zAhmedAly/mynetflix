@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const List = require("../models/List");
+const Movie = require("../models/Movie");
 const verify = require("../verifyToken");
 
 //CREATE
@@ -39,31 +40,45 @@ router.get("/", verify, async (req, res) => {
   const typeQuery = req.query.type;
   const genreQuery = req.query.genre;
   console.log(typeQuery, genreQuery);
-  let list = [];
+  let lists = [];
   try {
     if (typeQuery) {
       if (genreQuery) {
-        list = await List.aggregate([
+        lists = await List.aggregate([
           { $sample: { size: 10 } },
           { $match: { type: typeQuery, genre: genreQuery } },
           // { $sort: { creaedAt: 1 } },
         ]);
       } else {
-        list = await List.aggregate([
+        lists = await List.aggregate([
           { $sample: { size: 10 } },
           { $match: { type: typeQuery } },
           // { $sort: { creaedAt: 1 } },
         ]);
       }
     } else {
-      list = await List.aggregate([
+      lists = await List.aggregate([
         { $sample: { size: 10 } },
         // { $sort: { creaedAt: 1 } },
       ]);
     }
-    res.status(200).json(list);
+
+    const newLists = await Promise.all(
+      lists.map(async (list) => {
+        let movieDetails = [];
+        movieDetails = await Promise.all(
+          list.content.map(async (movieId) => {
+            return await Movie.findById(movieId);
+          })
+        );
+        return { ...list, content: movieDetails };
+      })
+    );
+
+    res.status(200).json(newLists);
   } catch (err) {
-    res.status(500).json(err);
+    console.log(err);
+    res.status(500).json({ error: err });
   }
 });
 

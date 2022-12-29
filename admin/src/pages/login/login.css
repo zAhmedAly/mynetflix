@@ -27,24 +27,31 @@
   height: 40px;
 }
 
-.loginForm {
+.formContainer {
   margin: auto;
-  width: 300px;
-  height: max-content;
-  padding: 16px;
-  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.loginForm {
+  width: 350px;
+  min-height: 350px;
+  padding: 32px;
+  border-radius: 8px;
   background-color: var(--main-color);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 16px;
+  box-sizing: border-box;
 }
 
 .loginInput {
-  font-size: 16px;
-  height: 35px;
+  height: 45px;
   border-radius: 5px;
-  background-color: rgb(99, 99, 99);
+  background-color: #333;
   color: white;
   padding-left: 10px;
   outline: none;
@@ -55,7 +62,7 @@
 }
 
 .loginButton {
-  height: 35px;
+  height: 45px;
   border-radius: 5px;
   background-color: red;
   color: white;

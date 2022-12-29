@@ -61,6 +61,7 @@ router.get("/find/:id", verify, async (req, res) => {
     const movie = await Movie.findById(req.params.id);
     res.status(200).json(movie);
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
