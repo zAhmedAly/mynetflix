@@ -1,6 +1,11 @@
 import React, { useContext, useRef } from "react";
 import "./topbar.css";
-import { NotificationsNone, Language, Settings } from "@material-ui/icons";
+import {
+  ArrowDropDown,
+  NotificationsNone,
+  Language,
+  Settings,
+} from "@material-ui/icons";
 import { Link, useHistory } from "react-router-dom";
 import { AuthContext } from "../../context/authContext/AuthContext";
 
@@ -41,9 +46,11 @@ export default function Topbar() {
           <div className="topbarIconContainer">
             <Settings style={{ fontSize: "1.875rem" }} />
           </div>
-          <img src="../../img/profileImg.webp" alt="" className="topAvatar" />
+          <div className="topbarIconContainer">
+            <img src="../../img/profileImg.webp" alt="" className="topAvatar" />
+          </div>
           <div className="profile" ref={profileRef}>
-            {/* <ArrowDropDown className="icon" /> */}
+            <ArrowDropDown className="icon" style={{ fontSize: "1.875rem" }} />
             <div className="options">
               <span className="option">Settings</span>
               <span className="option" onClick={handleLogot}>
