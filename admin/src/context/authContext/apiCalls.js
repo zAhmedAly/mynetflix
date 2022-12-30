@@ -9,7 +9,9 @@ export const login = async (user, dispatch) => {
   dispatch(loginStart());
   try {
     const res = await axiosInstance.post("auth/login", user);
-    res.data.isAdmin && dispatch(loginSuccess(res.data));
+    res.data.isAdmin
+      ? dispatch(loginSuccess(res.data))
+      : dispatch(loginFailure("User is not authorized to access this Link"));
   } catch (err) {
     dispatch(loginFailure(err.response.data));
   }

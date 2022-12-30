@@ -14,7 +14,7 @@
 }
 
 .sidebarWrapper {
-  padding: 20px;
+  padding: 16px;
   color: #555;
 }
 
@@ -29,7 +29,7 @@
 
 .sidebarList {
   list-style: none;
-  padding: 5px;
+  padding: 4px;
 }
 
 .sidebarListItem {
@@ -37,15 +37,16 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 8px;
+  /* width: 100%; */
 }
 
 .sidebarListItem.active,
 .sidebarListItem:hover {
-  background-color: rgb(240, 240, 255);
+  background-color: rgb(201, 201, 233);
 }
 
 .sidebarIcon {
-  margin-right: 5px;
+  margin-right: 8px;
   font-size: 20px !important;
 }

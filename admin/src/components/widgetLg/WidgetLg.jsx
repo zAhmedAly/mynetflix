@@ -33,11 +33,11 @@ export default function WidgetLg() {
           <tr className="widgetLgTr">
             <td className="widgetLgUser">
               <img
-                src="../../img/profileImg.webp"
+                src="../../img/noAvatar.jpg"
                 alt=""
                 className="widgetLgImg"
               />
-              <span className="widgetLgName">Susan Carol</span>
+              <span className="widgetLgName">Lisa Smith</span>
             </td>
             <td className="widgetLgDate">2 Jun 2021</td>
             <td className="widgetLgAmount">$122.00</td>
@@ -52,7 +52,7 @@ export default function WidgetLg() {
                 alt=""
                 className="widgetLgImg"
               />
-              <span className="widgetLgName">Susan Carol</span>
+              <span className="widgetLgName">Carol Jons</span>
             </td>
             <td className="widgetLgDate">2 Jun 2021</td>
             <td className="widgetLgAmount">$122.00</td>

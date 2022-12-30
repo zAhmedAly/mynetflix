@@ -33,10 +33,7 @@ export default function WidgetSm() {
         {newUsers.map((user) => (
           <li className="widgetSmListItem" key={user._id}>
             <img
-              src={
-                user.profilePic ||
-                "https://pbs.twimg.com/media/D8tCa48VsAA4lxn.jpg"
-              }
+              src={user.profilePic || "../../img/noAvatar.jpg"}
               alt=""
               className="widgetSmImg"
             />
