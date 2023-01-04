@@ -1,4 +1,12 @@
-.home{
-    background-color: var(--main-color);
-    overflow: hidden;
+.home {
+  background-color: var(--main-color);
+  overflow: hidden;
+  padding-bottom: 32px;
+
+  p {
+    padding: 32px 32px 0 32px;
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+  }
 }

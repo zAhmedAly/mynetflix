@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./featured.scss";
 
-export default function Featured({ type, setGenre }) {
+export default function Featured({ type, setGenre, genre }) {
   // const [isScrolled, setIsScrolled] = useState(false);
 
   const [content, setContent] = useState({});
@@ -30,6 +30,7 @@ export default function Featured({ type, setGenre }) {
   };
 
   useEffect(() => {
+    setGenre("");
     getRandomContent();
     // eslint-disable-next-line
   }, [type]);
@@ -57,10 +58,11 @@ export default function Featured({ type, setGenre }) {
               <select
                 name="genre"
                 id="genre"
+                value={genre}
                 onChange={(e) => setGenre(e.target.value)}
                 aria-label="genre"
               >
-                <option>Genre</option>
+                <option value="">Genre</option>
                 <option value="adventure">Adventure</option>
                 <option value="action">Action</option>
                 <option value="comedy">Comedy</option>

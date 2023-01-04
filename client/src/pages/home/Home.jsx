@@ -7,13 +7,17 @@ import axios from "axios";
 
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
-  const [genre, setGenre] = useState(null);
+  const [genre, setGenre] = useState("");
   const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
     headers: {
       token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
     },
   });
+
+  useEffect(() => {
+    setGenre("");
+  }, []);
 
   useEffect(() => {
     const getRandomLists = async () => {
@@ -33,10 +37,12 @@ const Home = ({ type }) => {
   return (
     <div className="home">
       <Navbar />
-      <Featured type={type} setGenre={setGenre} />
-      {lists.map((list) => (
-        <List list={list} key={list._id} />
-      ))}
+      <Featured type={type} setGenre={setGenre} genre={genre} />
+      {lists.length > 0 ? (
+        lists.map((list) => <List list={list} key={list._id} />)
+      ) : (
+        <p> No Lists </p>
+      )}
     </div>
   );
 };

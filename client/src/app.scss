@@ -2,11 +2,15 @@
   --main-color: #0b0b0b;
 }
 
+body {
+  height: 100vh;
+  background-color: black;
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .link {

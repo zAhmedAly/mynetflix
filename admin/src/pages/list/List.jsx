@@ -64,11 +64,11 @@ export default function List() {
         </>
       ) : (
         <div className="errorContainer">
-          <h2 className="movieTitle">
+          <h2 className="listTitle">
             Something went wrong to retreive list information
           </h2>
           <br></br>
-          <Link to="/movies" className="link">
+          <Link to="/lists" className="link">
             <h3 style={{ color: "blue" }}>Please go back to Lists</h3>
           </Link>
         </div>
