@@ -50,7 +50,7 @@
 
 .loginInput {
   height: 45px;
-  border-radius: 5px;
+  border-radius: 4px;
   background-color: #333;
   color: white;
   padding-left: 10px;
@@ -63,7 +63,7 @@
 
 .loginButton {
   height: 45px;
-  border-radius: 5px;
+  border-radius: 4px;
   background-color: red;
   color: white;
   border: none;

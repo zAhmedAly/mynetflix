@@ -8,13 +8,6 @@ export default function List() {
   const { lists } = useContext(ListContext);
   const list = lists.filter((list) => list._id === params.listId)[0];
 
-  // console.log("lists = ", lists);
-  // console.log("params = ", params);
-  // console.log("list = ", list);
-
-  // const location = useLocation();
-  // const { list } = location.state;
-
   return (
     <div className="list">
       {list ? (

@@ -77,7 +77,7 @@ export default function NewMovie() {
       <h1 className="addProductTitle">New Movie</h1>
       <form className="addProductForm">
         <div className="addProductItem">
-          <label>Image</label>
+          <label for="img">Image</label>
           <input
             type="file"
             id="img"
@@ -86,7 +86,7 @@ export default function NewMovie() {
           />
         </div>
         <div className="addProductItem">
-          <label>Title image</label>
+          <label for="imgTitle">Title image</label>
           <input
             type="file"
             id="imgTitle"
@@ -95,7 +95,7 @@ export default function NewMovie() {
           />
         </div>
         <div className="addProductItem">
-          <label>Thumbnail image</label>
+          <label for="imgSm">Thumbnail image</label>
           <input
             type="file"
             id="imgSm"
@@ -165,17 +165,19 @@ export default function NewMovie() {
           </select>
         </div>
         <div className="addProductItem">
-          <label>Trailer</label>
+          <label for="trailer">Trailer</label>
           <input
             type="file"
+            id="trailer"
             name="trailer"
             onChange={(e) => setTrailer(e.target.files[0])}
           />
         </div>
         <div className="addProductItem">
-          <label>Video</label>
+          <label for="video">Video</label>
           <input
             type="file"
+            id="video"
             name="video"
             onChange={(e) => setVideo(e.target.files[0])}
           />
