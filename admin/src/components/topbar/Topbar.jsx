@@ -12,7 +12,7 @@ import { AuthContext } from "../../context/authContext/AuthContext";
 import { logout } from "../../context/authContext/AuthActions";
 
 export default function Topbar() {
-  const { dispatch } = useContext(AuthContext);
+  const { user, dispatch } = useContext(AuthContext);
 
   const history = useHistory();
 
@@ -47,7 +47,14 @@ export default function Topbar() {
             <Settings style={{ fontSize: "1.875rem" }} />
           </div>
           <div className="topbarIconContainer">
-            <img src="../../img/profileImg.webp" alt="" className="topAvatar" />
+            {/* <img src="../../img/profileImg.webp" alt="" className="topAvatar" /> */}
+            <img
+              src={
+                user?.profilePic ? user.profilePic : "../../img/noAvatar.jpg"
+              }
+              alt="profilePic"
+              className="topAvatar"
+            />
           </div>
           <div className="profile" ref={profileRef}>
             <ArrowDropDown className="icon" style={{ fontSize: "1.875rem" }} />

@@ -52,7 +52,12 @@ const Navbar = () => {
           <Search className="icon" />
           <Notifications className="icon" />
           <span>{user.username}</span>
-          <img src="img/profileImg.webp" alt="" />
+          {/* <img src="img/profileImg.webp" alt="" /> */}
+          <img
+            src={user?.profilePic ? user.profilePic : "../../img/noAvatar.jpg"}
+            alt="profilePic"
+          />
+
           <div className="profile">
             <ArrowDropDown className="icon" />
             <div className="options">
