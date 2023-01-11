@@ -17,7 +17,7 @@ const Home = ({ type }) => {
 
   useEffect(() => {
     setGenre("");
-  }, []);
+  }, [type]);
 
   useEffect(() => {
     const getRandomLists = async () => {
@@ -25,6 +25,7 @@ const Home = ({ type }) => {
         const res = await axiosInstance.get(
           `lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""}`
         );
+
         setLists(res.data);
       } catch (err) {
         console.log(err);
@@ -38,11 +39,13 @@ const Home = ({ type }) => {
     <div className="home">
       <Navbar />
       <Featured type={type} setGenre={setGenre} genre={genre} />
-      {lists.length > 0 ? (
-        lists.map((list) => <List list={list} key={list._id} />)
-      ) : (
-        <p> No Lists </p>
-      )}
+      <div className="listContainer">
+        {lists.length > 0 ? (
+          lists.map((list) => <List list={list} key={list._id} />)
+        ) : (
+          <p> No Lists </p>
+        )}
+      </div>
     </div>
   );
 };

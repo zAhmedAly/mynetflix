@@ -29,6 +29,15 @@ export default function Watch() {
         controls
         src={movie?.video}
       />
+      {/* <iframe
+        width="800"
+        height="600"
+        src="https://www.youtube.com/embed/o5F8MOz_IDw"
+        title="YouTube video player"
+        frameborder="15"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;"
+        allowfullscreen
+      ></iframe> */}
     </div>
   );
 }

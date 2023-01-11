@@ -3,6 +3,12 @@
   overflow: hidden;
   padding-bottom: 32px;
 
+  .listContainer {
+    max-width: 1660px;
+    margin: auto;
+    overflow-x: hidden;
+  }
+
   p {
     padding: 32px 32px 0 32px;
     color: white;

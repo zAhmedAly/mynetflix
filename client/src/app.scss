@@ -1,3 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap");
+
+@mixin tablet {
+  @media only screen and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media only screen and (max-width: 600px) {
+    //479
+    @content;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 100%;
+
+  @include tablet {
+    font-size: 80%;
+  }
+
+  @include mobile {
+    font-size: 60%;
+  }
+}
+
 :root {
   --main-color: #0b0b0b;
 }
@@ -5,12 +39,15 @@
 body {
   height: 100vh;
   background-color: black;
+  color: white;
 }
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Roboto", sans-serif;
+  // font-family: "Roboto", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.5;
 }
 
 .link {
@@ -18,14 +55,6 @@ body {
   text-decoration: none;
 }
 
-@mixin tablet {
-  @media (max-width: 767px) {
-    @content;
-  }
-}
-
-@mixin mobile {
-  @media (max-width: 479px) {
-    @content;
-  }
+img {
+  max-width: 100%;
 }

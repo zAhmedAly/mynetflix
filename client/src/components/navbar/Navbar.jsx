@@ -12,7 +12,7 @@ const Navbar = () => {
   const history = useHistory();
 
   window.onscroll = () => {
-    setIsScrolled(window.pageYOffset === 0 ? false : true);
+    setIsScrolled(window.pageYOffset <= 30 ? false : true);
     return () => (window.onscroll = null);
   };
 
@@ -40,13 +40,13 @@ const Navbar = () => {
             />
           </Link>
           <Link to="/series" className="link">
-            <span className="navbarmainLinks">Series</span>
+            <span className="navbarmainLinks">TV Series</span>
           </Link>
           <Link to="/movies" className="link">
             <span className="navbarmainLinks">Movies</span>
           </Link>
-          <span>New|Popular</span>
-          <span>My List</span>
+          <span className="navbarmainLinks">New|Popular</span>
+          {/* <span className="navbarmainLinks">My List</span> */}
         </div>
         <div className="right">
           <Search className="icon" />
