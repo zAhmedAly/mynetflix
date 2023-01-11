@@ -6,14 +6,26 @@ import "./featured.scss";
 
 export default function Featured({ type, setGenre, genre }) {
   const bgImage =
-    // "https://image.tmdb.org/t/p/original//r9PkFnRUIthgBp2JZZzD380MWZy.jpg";
-    "https://image.tmdb.org/t/p/original//s16H6tpK2utvwDtzZ8Qy4qm5Emw.jpg";
-  // "https://image.tmdb.org/t/p/original//zrnzWEQSJ0jtufPGR4SEnB6s1q1.jpg";
+    // "https://image.tmdb.org/t/p/original/r9PkFnRUIthgBp2JZZzD380MWZy.jpg";
+    "https://image.tmdb.org/t/p/original/s16H6tpK2utvwDtzZ8Qy4qm5Emw.jpg";
+  // "https://image.tmdb.org/t/p/original/zrnzWEQSJ0jtufPGR4SEnB6s1q1.jpg";
+  // 	https://image.tmdb.org/t/p/original/5kAGbi9MFAobQTVfK4kWPnIfnP0.jpg
+  // https://image.tmdb.org/t/p/original/AuV99eQivVWuk2AOSM6hYh9QRPQ.jpg
+  // https://image.tmdb.org/t/p/original/dKqa850uvbNSCaQCV4Im1XlzEtQ.jpg
+  // 	https://image.tmdb.org/t/p/original/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg
+  // 	https://image.tmdb.org/t/p/original/8I37NtDffNV7AZlDa7uDvvqhovU.jpg
+  // https://image.tmdb.org/t/p/original/nWs0auTqn2UaFGfTKtUE5tlTeBu.jpg
 
   const posterImg =
     // "https://image.tmdb.org/t/p/w500/lmf0zzR7ritjOL3qumRh3hfvOFK.jpg";
-    "https://image.tmdb.org/t/p/original//t6HIqrRAclMCA60NsSmeqe9RmNV.jpg";
-  // "https://image.tmdb.org/t/p/w500//1XSYOP0JjjyMz1irihvWywro82r.jpg";
+    "https://image.tmdb.org/t/p/w500/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg";
+  // "https://image.tmdb.org/t/p/w500/1XSYOP0JjjyMz1irihvWywro82r.jpg";
+  // https://image.tmdb.org/t/p/w500/7CNCv9uhqdwK7Fv4bR4nmDysnd9.jpg
+  // https://image.tmdb.org/t/p/w500/iREd0rNCjYdf5Ar0vfaW32yrkm.jpg
+  // 	https://image.tmdb.org/t/p/w500/vDGr1YdrlfbU9wxTOdpf3zChmv9.jpg
+  // https://image.tmdb.org/t/p/w500/pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg
+  // https://image.tmdb.org/t/p/w500/jRXYjXNq0Cs2TcJjLkki24MLp7u.jpg
+  //https://image.tmdb.org/t/p/w500/ga8R3OiOMMgSvZ4cOj8x7prUNYZ.jpg
 
   const [content, setContent] = useState({});
   const [status, setStatus] = useState("");
@@ -28,8 +40,9 @@ export default function Featured({ type, setGenre, genre }) {
   const getRandomContent = async () => {
     try {
       const res = await axiosInstance.get(`/movies/random?type=${type}`);
+      setContent(res.data[0]);
+
       setInterval(() => {
-        setContent(res.data[0]);
         setStatus("active");
       }, 1000);
     } catch (err) {
@@ -50,8 +63,8 @@ export default function Featured({ type, setGenre, genre }) {
       <div
         className={`hero ${status}`}
         style={{
-          // backgroundImage: `url(${content?.img})`,
-          backgroundImage: `url(${bgImage})`,
+          backgroundImage: `url(${content?.img})`,
+          // backgroundImage: `url(${bgImage})`,
         }}
       >
         <div className="hero__content">
@@ -86,14 +99,8 @@ export default function Featured({ type, setGenre, genre }) {
                 </>
               )}
             </div> */}
-            <h2 className="title">Avatar: The Way of Water</h2>
-            <span className="desc">
-              Set more than a decade after the events of the first film, learn
-              the story of the Sully family (Jake, Neytiri, and their kids), the
-              trouble that follows them, the lengths they go to keep each other
-              safe, the battles they fight to stay alive, and the tragedies they
-              endure.
-            </span>
+            <h2 className="title">{content?.title}</h2>
+            <span className="desc">{content?.desc}</span>
             <div className="buttons">
               <button type="button" className="play">
                 <PlayArrow />
@@ -111,8 +118,8 @@ export default function Featured({ type, setGenre, genre }) {
             </div>
           </div>
           <div className="hero__content__poster">
-            {/* <img src={content?.img} alt="imgTitle" /> */}
-            <img src={posterImg} alt="imgTitle" />
+            <img src={content?.imgSm} alt="imgTitle" />
+            {/* <img src={posterImg} alt="imgTitle" /> */}
           </div>
         </div>
       </div>
