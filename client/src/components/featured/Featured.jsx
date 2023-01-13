@@ -100,6 +100,18 @@ export default function Featured({ type, setGenre, genre }) {
               )}
             </div> */}
             <h2 className="title">{content?.title}</h2>
+
+            <div className="itemInfoTop">
+              <span>{content.duration}</span>
+              <span className="limit">+{content.limit}</span>
+              <span>{content.year}</span>
+            </div>
+            <span
+              className="desc"
+              style={{ fontSize: "20px", fontWeight: "400", color: "white" }}
+            >
+              {content?.genre}
+            </span>
             <span className="desc">{content?.desc}</span>
             <div className="buttons">
               <button type="button" className="play">

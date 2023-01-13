@@ -28,6 +28,7 @@ export default function List({ list }) {
   return (
     <div className="list">
       <h2 className="listTitle">{list.title}</h2>
+
       <div className="wrapper">
         <ArrowBackIosOutlined
           className="sliderArrow left"
@@ -36,7 +37,9 @@ export default function List({ list }) {
         />
         <div className="container" ref={listRef}>
           {list.content.map((movie, i) => (
-            <ListItem index={i} movie={movie} key={i} />
+            <div className="item" style={{ marginRight: "1rem" }}>
+              <ListItem index={i} movie={movie} key={i} />
+            </div>
           ))}
         </div>
         <ArrowForwardIosOutlined
