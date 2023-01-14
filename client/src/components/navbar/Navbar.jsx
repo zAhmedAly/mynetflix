@@ -1,13 +1,32 @@
 import { ArrowDropDown, Notifications, Search } from "@material-ui/icons";
 import { useContext, useState } from "react";
 import "./navbar.scss";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import { AuthContext } from "../../authContext/AuthContext";
 import { logout } from "../../authContext/AuthActions";
+
+const headerNav = [
+  {
+    display: "Home",
+    path: "/",
+  },
+  {
+    display: "Movies",
+    path: "/movies",
+  },
+  {
+    display: "TV Series",
+    path: "/series",
+  },
+];
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { dispatch, user } = useContext(AuthContext);
+
+  const { pathname } = useLocation();
+
+  const active = headerNav.findIndex((e) => e.path === pathname);
 
   const history = useHistory();
 
@@ -39,15 +58,37 @@ const Navbar = () => {
               className="lgLogo"
             />
           </Link>
-          <Link to="/series" className="link">
+
+          {headerNav.map((e, i) => (
+            <span key={i} className={`${i === active ? "active" : ""}`}>
+              <Link to={e.path}>{e.display}</Link>
+            </span>
+          ))}
+
+          {/* {headerNav.map((e, i) => (
+            <Link to={e.path}>
+              <span
+                key={i}
+                className={` navbarmainLinks ${i === active ? "active" : ""}`}
+              >
+                {" "}
+                {e.display}
+              </span>
+            </Link>
+          ))} */}
+
+          {/* <Link to="/series" className="link">
             <span className="navbarmainLinks">TV Series</span>
           </Link>
           <Link to="/movies" className="link">
             <span className="navbarmainLinks">Movies</span>
           </Link>
-          <span className="navbarmainLinks">New|Popular</span>
+          <span className="navbarmainLinks">New|Popular</span> */}
           {/* <span className="navbarmainLinks">My List</span> */}
         </div>
+
+        {/*                */}
+
         <div className="right">
           <Search className="icon" />
           <Notifications className="icon" />

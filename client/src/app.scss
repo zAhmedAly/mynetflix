@@ -48,6 +48,9 @@ body {
   // font-family: "Roboto", sans-serif;
   font-family: "Montserrat", sans-serif;
   line-height: 1.5;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 .link {
@@ -62,4 +65,10 @@ img {
 a {
   text-decoration: none;
   color: unset;
+}
+
+@media (hover: hover) {
+  a:hover {
+    color: #ff0000;
+  }
 }

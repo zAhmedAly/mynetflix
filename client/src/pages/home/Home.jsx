@@ -16,6 +16,10 @@ const Home = ({ type }) => {
   });
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     setGenre("");
   }, [type]);
 
@@ -41,7 +45,7 @@ const Home = ({ type }) => {
       <Featured type={type} setGenre={setGenre} genre={genre} />
       <div className="listContainer">
         {lists.length > 0 ? (
-          lists.map((list) => <List list={list} key={list._id} />)
+          lists.map((list, i) => <List list={list} key={list._id} />)
         ) : (
           <p> No Lists </p>
         )}

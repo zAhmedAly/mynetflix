@@ -40,7 +40,7 @@ export default function ListItem({ index, movie }) {
                 <span className="limit">+{movie.limit}</span>
                 <span>{movie.year}</span>
               </div>
-              <div className="desc">{shorten(movie?.desc, 375, " ")}</div>
+              <div className="desc">{shorten(movie?.desc, 300, " ")}</div>
               <div className="itemInfoBottom">
                 <div className="genre">{movie.genre}</div>
                 <div className="icons">
@@ -56,7 +56,14 @@ export default function ListItem({ index, movie }) {
           </>
         )}
       </div>
-      <h3 style={{ padding: "0 1rem" }}>{movie.title}</h3>
+      <h5
+        style={{
+          visibility: !isHovered ? "hidden" : "visible",
+          padding: "0 0.5rem",
+        }}
+      >
+        {movie.title}
+      </h5>
     </>
     // </Link>
   );
