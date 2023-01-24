@@ -73,7 +73,6 @@ export default function MovieList() {
       headerAlign: "center",
       headerName: "Series",
       width: 160,
-      headerAlign: "center",
       headerClassName: "super-app-theme--header",
     },
 
@@ -85,7 +84,6 @@ export default function MovieList() {
       headerClassName: "super-app-theme--header",
       width: 160,
       renderCell: (params) => {
-        //  console.log("params = ", params);
         return (
           <>
             <Link

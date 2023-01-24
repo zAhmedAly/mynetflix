@@ -40,8 +40,6 @@ export default function UserList() {
     return { ...user, id: user._id };
   });
 
-  // console.log("data", users);
-
   const handleDelete = (id) => {
     setData(data.filter((user) => user._id !== id));
   };

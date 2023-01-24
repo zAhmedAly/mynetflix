@@ -9,11 +9,16 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "./authContext/AuthContext";
 
 const App = () => {
   const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <Router>
       <Switch>

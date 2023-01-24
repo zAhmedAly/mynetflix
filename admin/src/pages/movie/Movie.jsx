@@ -9,13 +9,6 @@ export default function Movie() {
   const { movies } = useContext(MovieContext);
   const movie = movies.filter((movie) => movie._id === params.movieId)[0];
 
-  // console.log("movies = ", movies);
-  // console.log("params = ", params);
-  // console.log("movie = ", movie);
-
-  // const location = useLocation();
-  // const { movie1 } = location.state;
-
   return (
     <div className="movie">
       {movie ? (

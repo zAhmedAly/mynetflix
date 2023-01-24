@@ -16,7 +16,6 @@ export default function User() {
   const [isLoading, setIsLoading] = useState(false);
 
   const { userId } = useParams();
-  console.log("userId = ", userId);
   const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
     headers: {
@@ -40,8 +39,6 @@ export default function User() {
     getUser();
     // eslint-disable-next-line
   }, []);
-
-  console.log("data", user);
 
   return (
     <div className="user">

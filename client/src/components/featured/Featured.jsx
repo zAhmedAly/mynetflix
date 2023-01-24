@@ -1,38 +1,78 @@
 import { InfoOutlined, PlayArrow } from "@material-ui/icons";
-import axios from "axios";
+// import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./featured.scss";
 
-export default function Featured({ type, setGenre, genre }) {
+import tmdbApi, { category, movieType, tvType } from "../../api/tmdbApi";
+import apiConfig from "../../api/apiConfig";
+
+export default function Featured({ type }) {
   const [content, setContent] = useState({});
   const [status, setStatus] = useState("");
+  const [genres, setGenres] = useState([]);
 
-  const axiosInstance = axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
-    headers: {
-      token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
-    },
-  });
+  // const axiosInstance = axios.create({
+  //   baseURL: process.env.REACT_APP_API_URL,
+  //   headers: {
+  //     token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+  //   },
+  // });
 
   const getRandomContent = async () => {
+    const params = { page: 1 };
+    let res = null;
+    let id = null;
     try {
-      const res = await axiosInstance.get(`/movies/random?type=${type}`);
-      setContent(res.data[0]);
+      // const res = await axiosInstance.get(`/movies/random?type=${type}`);
+      switch (type) {
+        case "movie":
+          res = await tmdbApi.getMoviesList(movieType.popular, {
+            params,
+          });
+          break;
+        case "series":
+          res = await tmdbApi.getTvList(tvType.popular, { params });
+          break;
+        default:
+          res = await tmdbApi.getMoviesList(movieType.top_rated, {
+            params,
+          });
+          break;
+      }
+
+      // setContent(res.data[0]);
+
+      id = Math.floor(Math.random() * 20);
+
+      const response = await tmdbApi.detail(
+        type === "series" ? category.tv : category.movie,
+        res.results[id].id,
+        {
+          params: {},
+        }
+      );
+
+      setContent(response);
+      setGenres(response.genres);
+      // setContent(res.results[Math.floor(Math.random() * 20)]);
+
+      window.scrollTo(0, 0);
 
       setInterval(() => {
         setStatus("active");
       }, 1000);
     } catch (err) {
-      console.log(err);
+      console.log("Featured Error: ", err);
       setStatus("");
     }
   };
 
   useEffect(() => {
-    setStatus("");
-    setGenre("");
     getRandomContent();
+    return () => {
+      setStatus("");
+    };
     // eslint-disable-next-line
   }, [type]);
 
@@ -41,8 +81,18 @@ export default function Featured({ type, setGenre, genre }) {
       <div
         className={`hero ${status}`}
         style={{
-          backgroundImage: `url(${content?.img})`,
-          // backgroundImage: `url(${bgImage})`,
+          // backgroundImage: `url(${content?.img})`,
+          backgroundImage: `url(
+            ${
+              content?.backdrop_path &&
+              apiConfig.originalImage(
+                content?.backdrop_path
+                  ? content?.backdrop_path
+                  : content?.poster_path
+              )
+            }
+          )`,
+          backgroundColor: "darkgray",
         }}
       >
         <div className="hero__content">
@@ -77,26 +127,68 @@ export default function Featured({ type, setGenre, genre }) {
                 </>
               )}
             </div> */}
-            <h2 className="title">{content?.title}</h2>
+            <h2 className="title">{content?.name || content?.title}</h2>
 
             <div className="itemInfoTop">
-              <span>{content.duration}</span>
-              <span className="limit">+{content.limit}</span>
-              <span>{content.year}</span>
+              {type === "series" ? (
+                <>
+                  <span>Country: {content?.origin_country}</span>
+                  <span style={{ marginLeft: "1rem" }}>
+                    {content?.first_air_date?.substring(0, 4)}
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className="limit">+{content?.limit}</span>
+                  <span>{content?.release_date?.substring(0, 4)}</span>
+                </>
+              )}
             </div>
-            <span
-              className="desc"
-              style={{ fontSize: "20px", fontWeight: "400", color: "white" }}
-            >
-              {content?.genre}
-            </span>
-            <span className="desc">{content?.desc}</span>
+            <div className="itemInfoTop">
+              {content?.vote_average > 0 ? (
+                <>
+                  <span className="limit">
+                    {content?.vote_average.toFixed(1)}
+                  </span>
+
+                  {/* <span style={{ marginRight: "1rem" }}>
+                    Rating: {content?.vote_average.toFixed(1)}
+                  </span> */}
+                  <span>
+                    {content?.vote_count.toLocaleString("en-US")} Votes
+                  </span>
+                </>
+              ) : (
+                <span>No Ratings</span>
+              )}
+            </div>
+            <div className="genreContainer">
+              {genres.map((genre) => (
+                <span
+                  key={genre.id}
+                  className="desc"
+                  style={{
+                    fontSize: "0.8em",
+                    fontWeight: "500",
+                    color: "white",
+                    marginRight: "1rem",
+                    border: "2px solid white",
+                    padding: "4px 8px",
+                    borderRadius: "32px",
+                  }}
+                >
+                  {genre.name}
+                </span>
+              ))}
+            </div>
+            <span className="desc">{content?.overview}</span>
             <div className="buttons">
               <button type="button" className="play">
                 <PlayArrow />
                 <Link
                   to={{ pathname: "/watch", movie: content }}
                   className="link"
+                  style={{ color: "white" }}
                 >
                   <span>Watch Now</span>
                 </Link>
@@ -108,8 +200,15 @@ export default function Featured({ type, setGenre, genre }) {
             </div>
           </div>
           <div className="hero__content__poster">
-            <img src={content?.imgSm} alt="imgTitle" />
+            {/* <img src={content?.imgSm} alt="imgTitle" /> */}
             {/* <img src={posterImg} alt="imgTitle" /> */}
+            <img
+              src={
+                content?.poster_path &&
+                apiConfig.w500Image(content?.poster_path)
+              }
+              alt="PosterImg"
+            />
           </div>
         </div>
       </div>

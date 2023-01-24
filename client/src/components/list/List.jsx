@@ -15,34 +15,30 @@ export default function List({ list }) {
   const handleClick = (direction) => {
     setIsMoved(true);
     let distance = listRef.current.getBoundingClientRect().x - 50;
-    console.log(
-      "distance = ",
-      distance,
-      listRef.current.getBoundingClientRect().x
-    );
+
     if (direction === "left" && slideNumber > 0) {
       setSlideNumber(slideNumber - 1);
       listRef.current.style.transform = `translateX(${230 + distance}px)`;
-      console.log("left = ", 230 + distance);
     }
     if (direction === "right" && slideNumber < 5) {
       setSlideNumber(slideNumber + 1);
       listRef.current.style.transform = `translateX(${-230 + distance}px)`;
-      console.log("right = ", -230 + distance);
     }
   };
   return (
     <div className="list">
-      <h2 className="listTitle">{list.title}</h2>
+      <h2 className="listTitle">{list?.title}</h2>
 
       <div className="wrapper">
         <ArrowBackIosOutlined
           className="sliderArrow left"
           onClick={() => handleClick("left")}
-          style={{ display: (!isMoved || list.content.length <= 5) && "none" }}
+          style={{
+            display: (!isMoved || list?.content.length <= 5) && "none",
+          }}
         />
         <div className="container" ref={listRef}>
-          {list.content.map((movie, i) => (
+          {list?.content.map((movie, i) => (
             <div className="item" style={{ marginRight: "1rem" }}>
               <ListItem index={i} movie={movie} key={movie._id} />
             </div>

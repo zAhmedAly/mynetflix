@@ -47,9 +47,15 @@ export default function ListItem({ index, movie }) {
                   <Link to={{ pathname: "/watch", movie: movie }}>
                     <PlayArrow className="icon" />
                   </Link>
-                  <Add className="icon" />
-                  <ThumbUpAltOutlined className="icon" />
-                  <ThumbDownOutlined className="icon" />
+                  <Link to={{ pathname: "/watch", movie: movie }}>
+                    <Add className="icon" />
+                  </Link>
+                  <Link to={{ pathname: "/watch", movie: movie }}>
+                    <ThumbUpAltOutlined className="icon" />
+                  </Link>
+                  <Link to={{ pathname: "/watch", movie: movie }}>
+                    <ThumbDownOutlined className="icon" />
+                  </Link>
                 </div>
               </div>
             </div>
