@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;900&display=swap");
 
+@mixin flex($aligin-item, $justify-content) {
+  display: flex;
+  align-items: $aligin-item;
+  justify-content: $justify-content;
+}
+
 @mixin tablet {
   @media only screen and (max-width: 1024px) {
     @content;
@@ -71,4 +77,9 @@ a {
   a:hover {
     color: #ff0000;
   }
+}
+
+.container {
+  max-width: 1660px;
+  margin: auto;
 }

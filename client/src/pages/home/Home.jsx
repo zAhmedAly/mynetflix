@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { category, movieType, tvType } from "../../api/tmdbApi";
 import MovieList from "../../components/list/MovieList";
 import useWindowSize from "../../hooks/useWindowSize";
+import Footer from "../../components/footer/Footer";
 
 const Lists = [
   {
@@ -97,6 +98,7 @@ const Home = ({ type = null }) => {
           />
         ))}
       </div>
+      <Footer />
     </div>
   );
 };
