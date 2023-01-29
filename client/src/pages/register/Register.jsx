@@ -45,27 +45,30 @@ export default function Register() {
         </div>
       </div>
       <div className="container">
-        <h1>Unlimited movies, TV shows & more.</h1>
-        <h2>Watch anywhere. Cancel anytime.</h2>
-        <p>
-          Ready to watch? Enter your email to create or restart your membership.
-        </p>
-        {!email ? (
-          <div className="input1">
-            <input type="email" placeholder="Email address" ref={emailRef} />
-            <button className="registerButton" onClick={handleStart}>
-              Get Started
-            </button>
-          </div>
-        ) : (
-          <form className="input2">
-            <input type="username" placeholder="username" ref={usernameRef} />
-            <input type="password" placeholder="password" ref={passwordRef} />
-            <button className="registerButton" onClick={handleFinish}>
-              Start
-            </button>
-          </form>
-        )}
+        <div className="wrapper">
+          <h1>Unlimited movies, TV shows & more.</h1>
+          <h2>Watch anywhere. Cancel anytime.</h2>
+          <p>
+            Ready to watch? Enter your email to create or restart your
+            membership.
+          </p>
+          {!email ? (
+            <div className="input1">
+              <input type="email" placeholder="Email address" ref={emailRef} />
+              <button className="registerButton" onClick={handleStart}>
+                Get Started
+              </button>
+            </div>
+          ) : (
+            <form className="input2">
+              <input type="username" placeholder="username" ref={usernameRef} />
+              <input type="password" placeholder="password" ref={passwordRef} />
+              <button className="registerButton" onClick={handleFinish}>
+                Start
+              </button>
+            </form>
+          )}
+        </div>
       </div>
     </div>
   );

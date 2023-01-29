@@ -45,101 +45,103 @@
     align-items: center;
     justify-content: center;
     color: white;
-    padding: 0 8px;
 
-    h1 {
-      font-size: 48px;
-      font-weight: 900;
-    }
+    .wrapper {
+      padding: 0 8px;
 
-    h2 {
-      margin: 20px 0;
-    }
-
-    p {
-      font-size: 20px;
-    }
-
-    @include tablet {
       h1 {
-        font-size: 32px;
-        font-weight: 700;
+        font-size: 48px;
+        font-weight: 900;
       }
 
       h2 {
-        margin: 16px 0;
+        margin: 20px 0;
       }
 
       p {
-        font-size: 16px;
-      }
-    }
-
-    .input1 {
-      max-width: 370px;
-      background-color: white;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 20px;
-      height: 40px;
-      border-radius: 4px;
-
-      input {
-        height: 100%;
-        border: none;
-        padding: 0 8px;
-        font-size: 16px;
-        border-style: none;
-        outline: none;
-        width: 65%;
+        font-size: 20px;
       }
 
-      .registerButton {
-        height: 100%;
-        // width: max-content;
-        background-color: red;
-        border: none;
-        color: white;
-        font-size: 16px;
-        font-weight: 700;
-        cursor: pointer;
-        padding: 4px 8px;
-        width: 35%;
-      }
-    }
+      @include tablet {
+        h1 {
+          font-size: 32px;
+          font-weight: 700;
+        }
 
-    .input2 {
-      width: 350px;
-      background-color: white;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 20px;
-      height: 40px;
-      border-radius: 4px;
+        h2 {
+          margin: 16px 0;
+        }
 
-      input {
-        height: 100%;
-        border: none;
-        padding: 0 8px;
-        font-size: 16px;
-        border-style: none;
-        outline: none;
-        width: 40%;
+        p {
+          font-size: 16px;
+        }
       }
 
-      .registerButton {
-        height: 100%;
-        // width: max-content;
-        background-color: red;
-        border: none;
-        color: white;
-        font-size: 16px;
-        font-weight: 700;
-        cursor: pointer;
-        padding: 4px 8px;
-        width: 20%;
+      .input1 {
+        width: 370px;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 20px auto;
+        height: 40px;
+        border-radius: 4px;
+
+        input {
+          height: 100%;
+          border: none;
+          padding: 0 8px;
+          font-size: 16px;
+          border-style: none;
+          outline: none;
+          width: 65%;
+        }
+
+        .registerButton {
+          height: 100%;
+          background-color: red;
+          border: none;
+          color: white;
+          font-size: 16px;
+          font-weight: 700;
+          cursor: pointer;
+          padding: 4px 8px;
+          width: 35%;
+        }
+      }
+
+      .input2 {
+        width: 370px;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 20px auto;
+        height: 40px;
+        border-radius: 4px;
+
+        input {
+          height: 100%;
+          border: none;
+          padding: 0 8px;
+          font-size: 16px;
+          border-style: none;
+          outline: none;
+          width: 40%;
+        }
+
+        .registerButton {
+          height: 100%;
+          // width: max-content;
+          background-color: red;
+          border: none;
+          color: white;
+          font-size: 16px;
+          font-weight: 700;
+          cursor: pointer;
+          padding: 4px 8px;
+          width: 20%;
+        }
       }
     }
   }
