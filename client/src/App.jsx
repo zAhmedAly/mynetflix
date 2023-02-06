@@ -16,6 +16,7 @@ const App = () => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
+    localStorage.setItem("user", null);
     window.scrollTo(0, 0);
   }, []);
 

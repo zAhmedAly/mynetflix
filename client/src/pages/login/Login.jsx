@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { login } from "../../authContext/apiCalls";
 import { AuthContext } from "../../authContext/AuthContext";
 import "./login.scss";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -10,19 +11,25 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState(null);
 
+  const override = {
+    display: "block",
+    margin: "0 auto",
+    borderColor: "white",
+    border: "2px solid white",
+  };
+
   const { isFetching, dispatch, error } = useContext(AuthContext);
 
   useEffect(() => {
+    let timer;
     if (error) {
       setMsg(error);
-      setTimeout(() => {
+      timer = setTimeout(() => {
         setMsg(null);
       }, 3000);
     }
 
-    return () => {
-      setMsg(null);
-    };
+    return () => clearTimeout(timer);
   }, [error]);
 
   const handleLogin = (e) => {
@@ -67,10 +74,11 @@ export default function Login() {
               height: "20px",
               display: "flex",
               alignItems: "center",
+              fontSize: "14px",
             }}
           >
             {" "}
-            {msg}{" "}
+            {!isFetching && msg}{" "}
           </p>
 
           <button
@@ -78,7 +86,18 @@ export default function Login() {
             onClick={handleLogin}
             disabled={isFetching}
           >
-            Sign In
+            {!isFetching ? (
+              "Sign In"
+            ) : (
+              <ClipLoader
+                // color={color}
+                loading={isFetching}
+                cssOverride={override}
+                size={35}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+              />
+            )}
           </button>
           <span style={{ marginTop: "32px" }}>
             New to Netflix?{" "}

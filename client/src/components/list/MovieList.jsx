@@ -88,6 +88,7 @@ export default function MovieList({ listName, category, type, id = 0 }) {
         <div className="container" ref={listRef}>
           {list?.map((movie, index) => (
             <div
+              key={index}
               className="item"
               style={{ marginRight: "16px", width: `${itemWidth}px` }}
             >
