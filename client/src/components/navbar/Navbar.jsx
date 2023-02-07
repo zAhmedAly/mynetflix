@@ -95,7 +95,8 @@ const Navbar = () => {
           <span>{user.username}</span>
           {/* <img src="img/profileImg.webp" alt="" /> */}
           <img
-            src={user?.profilePic ? user.profilePic : "../../img/noAvatar.jpg"}
+            // src={user?.profilePic ? user.profilePic : "../../img/noAvatar.jpg"}
+            src="../../img/noAvatar.jpg"
             alt="profilePic"
           />
 

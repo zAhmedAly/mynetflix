@@ -12,17 +12,17 @@ axiosInstance.interceptors.request.use(async (config) => config);
 axiosInstance.interceptors.response.use(
   async (response) => {
     if (response && response.data) {
-      console.log("axiosInstance Response = ", response);
+      // console.log("axiosInstance Response = ", response);
       return response.data;
     }
-    console.log("axiosInstance No Data = ", response);
+    // console.log("axiosInstance No Data = ", response);
     return response;
   },
   (error) => {
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     const status = error.response?.status || 500;
 
-    console.log("axiosInstance Error = ", status, { ...error });
+    // console.log("axiosInstance Error = ", status, { ...error });
 
     // throw error;
 

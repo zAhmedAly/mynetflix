@@ -11,7 +11,7 @@ export const login = async (user, dispatch) => {
     const res = await axiosInstance.post("auth/login", user);
     dispatch(loginSuccess(res));
   } catch (err) {
-    console.log("Login Error = ", err.response || err);
+    // console.log("Login Error = ", err.response || err);
     dispatch(loginFailure(err.response?.data || err));
   }
 };
