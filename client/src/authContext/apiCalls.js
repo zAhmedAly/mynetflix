@@ -15,3 +15,18 @@ export const login = async (user, dispatch) => {
     dispatch(loginFailure(err.response?.data || err));
   }
 };
+
+export const register = async (user, dispatch) => {
+  // const axiosInstance = axios.create({
+  //   baseURL: process.env.REACT_APP_API_URL,
+  // });
+
+  dispatch(loginStart());
+  try {
+    const res = await axiosInstance.post("auth/register", user);
+    dispatch(loginSuccess(res));
+  } catch (err) {
+    // console.log("Login Error = ", err.response || err);
+    dispatch(loginFailure(err.response?.data || err));
+  }
+};

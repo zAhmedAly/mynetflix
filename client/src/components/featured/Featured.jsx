@@ -11,6 +11,9 @@ export default function Featured({ type }) {
   const [content, setContent] = useState({});
   const [status, setStatus] = useState("");
   const [genres, setGenres] = useState([]);
+  const [link, setLink] = useState(null);
+
+  // const link = "/" + category[type] + "/" + item.id;
 
   // const axiosInstance = axios.create({
   //   baseURL: process.env.REACT_APP_API_URL,
@@ -52,7 +55,7 @@ export default function Featured({ type }) {
           params: {},
         }
       );
-
+      setLink("/" + category[type || "movie"] + "/" + response.id);
       setContent(response);
       setGenres(response.genres);
       // setContent(res.results[Math.floor(Math.random() * 20)]);
@@ -195,7 +198,9 @@ export default function Featured({ type }) {
               </button>
               <button type="button" className="more">
                 <InfoOutlined />
-                <span>More Info</span>
+                <Link to={link}>
+                  <span>More Info</span>
+                </Link>
               </button>
             </div>
           </div>

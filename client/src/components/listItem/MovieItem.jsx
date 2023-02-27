@@ -9,8 +9,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import apiConfig from "../../api/apiConfig";
 
-export default function MovieItem({ movie }) {
+export default function MovieItem({ movie, category }) {
   const [isHovered, setIsHovered] = useState(false);
+
+  const link = `/${category}/${movie.id}`;
+
+  // console.log("LINK = ", link);
 
   const shorten = (str, maxLen, separator = " ") => {
     if (str.length <= maxLen) return str;
@@ -45,7 +49,8 @@ export default function MovieItem({ movie }) {
               <div className="itemInfoBottom">
                 <div className="genre">{movie?.genre}</div>
                 <div className="icons">
-                  <Link to={{ pathname: "/watch", movie: movie }}>
+                  {/* <Link to={{ pathname: { link }, movie: movie }}> */}
+                  <Link to={link}>
                     <PlayArrow className="icon" />
                   </Link>
                   <Link to={{ pathname: "/watch", movie: movie }}>

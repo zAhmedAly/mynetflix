@@ -16,10 +16,11 @@
   .top {
     height: 70px;
     .wrapper {
-      padding: 15px;
+      padding: 32px 64px;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      opacity: 1;
 
       .logo {
         height: 40px;

@@ -100,7 +100,7 @@ export default function Login() {
             )}
           </button>
           <span style={{ marginTop: "32px" }}>
-            New to Netflix?{" "}
+            New to MovieFlix?{" "}
             <b style={{ cursor: "pointer" }} onClick={handleRegister}>
               Sign up now.
             </b>

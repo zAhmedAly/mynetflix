@@ -92,7 +92,7 @@ export default function MovieList({ listName, category, type, id = 0 }) {
               className="item"
               style={{ marginRight: "16px", width: `${itemWidth}px` }}
             >
-              <MovieItem movie={movie} key={index} />
+              <MovieItem movie={movie} category={category} key={index} />
             </div>
           ))}
         </div>

@@ -3,6 +3,8 @@ import Home from "./pages/home/Home";
 import Register from "./pages/register/Register";
 import Watch from "./pages/watch/Watch";
 import Login from "./pages/login/Login";
+import Detail from "./pages/detail/Detail";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -41,6 +43,7 @@ const App = () => {
             <Route path="/watch">
               <Watch />
             </Route>
+            <Route path="/:category/:id" component={Detail} />
           </Switch>
         )}
       </Switch>

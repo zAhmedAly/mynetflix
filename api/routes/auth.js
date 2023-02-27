@@ -14,10 +14,21 @@ router.post("/register", async (req, res) => {
     ).toString(),
   });
   try {
+    const userCheck = await User.findOne({
+      email: req.body.email,
+      username: req.body.username,
+    });
+
+    if (userCheck) {
+      return res.status(409).json("User already exists ...");
+    }
+
     const user = await newUser.save();
     res.status(201).json(user);
   } catch (err) {
-    res.status(500).json(err);
+    if (err.code === 11000) {
+      res.status(409).json("User already exists ...");
+    } else res.status(500).json(err);
   }
 });
 
@@ -27,7 +38,7 @@ router.post("/login", async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
 
     if (!user) {
-      return res.status(401).json("Wrong Username or Password!");
+      return res.status(404).json("Wrong Username or Password!");
     }
 
     // console.log("<<<USER>>>", user);
