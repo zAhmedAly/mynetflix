@@ -29,7 +29,7 @@ const CastList = (props) => {
                 `url(${apiConfig.w500Image(item.profile_path)})`,
             }}
           ></div>
-          <p className="casts__item__name">{item.name}</p>
+          <p className="casts__item__name">{item.name || item.original_name}</p>
         </div>
       ))}
     </div>

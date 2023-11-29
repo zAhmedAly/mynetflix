@@ -30,7 +30,11 @@ export default function MovieItem({ movie, category }) {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
         style={{
-          backgroundImage: `url(${apiConfig.w500Image(movie?.poster_path)})`,
+          backgroundImage:
+            (movie?.poster_path || movie?.backdrop_path) &&
+            `url(${apiConfig.w500Image(
+              movie?.poster_path || movie?.backdrop_path
+            )})`,
           // left: isHovered && index * 225 - 50 + index * 9,
         }}
       >

@@ -78,30 +78,36 @@ export default function MovieList({ listName, category, type, id = 0 }) {
       {/* <div>
         {size.width}px / {size.height}px / {itemWidth}px
       </div> */}
-      <h2 className="listTitle">{listName}</h2>
-      <div className="wrapper">
-        <ArrowBackIosOutlined
-          className="sliderArrow left"
-          onClick={() => handleClick("left")}
-          style={{ display: (!isMoved || slideNumber === 0) && "none" }}
-        />
-        <div className="container" ref={listRef}>
-          {list?.map((movie, index) => (
-            <div
-              key={index}
-              className="item"
-              style={{ marginRight: "16px", width: `${itemWidth}px` }}
-            >
-              <MovieItem movie={movie} category={category} key={index} />
+      {list.length > 0 && (
+        <>
+          <h2 className="listTitle">{listName}</h2>
+          <div className="wrapper">
+            <ArrowBackIosOutlined
+              className="sliderArrow left"
+              onClick={() => handleClick("left")}
+              style={{ display: (!isMoved || slideNumber === 0) && "none" }}
+            />
+            <div className="container" ref={listRef}>
+              {list?.map((movie, index) => (
+                <div
+                  key={index}
+                  className="item"
+                  style={{ marginRight: "16px", width: `${itemWidth}px` }}
+                >
+                  <MovieItem movie={movie} category={category} key={index} />
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-        <ArrowForwardIosOutlined
-          className="sliderArrow right"
-          onClick={() => handleClick("right")}
-          style={{ display: slideNumber >= Math.floor(10 - items) && "none" }}
-        />
-      </div>
+            <ArrowForwardIosOutlined
+              className="sliderArrow right"
+              onClick={() => handleClick("right")}
+              style={{
+                display: slideNumber >= Math.floor(10 - items) && "none",
+              }}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }

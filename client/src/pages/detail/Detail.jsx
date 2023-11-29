@@ -59,6 +59,11 @@ const Detail = () => {
                     </span>
                   ))}
               </div>
+              <p className="overview">
+                Release Year :{" "}
+                {item.first_air_date?.substring(0, 4) ||
+                  item.release_date?.substring(0, 4)}
+              </p>
               <p className="overview">{item.overview}</p>
               <div className="cast">
                 <div className="section__header">
@@ -73,10 +78,15 @@ const Detail = () => {
               <VideoList id={item.id} />
             </div>
             <div className="section mb-3">
-              <div className="section__header mb-2">
+              {/* <div className="section__header mb-2">
                 <h2>Similar</h2>
-              </div>
-              <MovieList category={category} type="similar" id={item.id} />
+              </div> */}
+              <MovieList
+                listName="Similar"
+                category={category}
+                type="similar"
+                id={item.id}
+              />
             </div>
           </div>
         </>
