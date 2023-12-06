@@ -46,7 +46,7 @@ export default function MovieItem({ movie, category }) {
             <div className="itemInfo">
               <div className="itemInfoTop">
                 <span>{movie.duration}</span>
-                <span className="limit">+{movie?.limit}</span>
+                <span className="limit">+{movie?.limit} - {movie.adult}</span>
                 <span>{movie?.year}</span>
               </div>
               <div className="desc">{shorten(movie?.overview, 300, " ")}</div>

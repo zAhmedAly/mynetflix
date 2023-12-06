@@ -24,7 +24,7 @@ const Detail = () => {
     };
     getDetail();
   }, [category, id]);
-
+console.log(item);
   return (
     <>
       {item && (
@@ -63,6 +63,10 @@ const Detail = () => {
                 Release Year :{" "}
                 {item.first_air_date?.substring(0, 4) ||
                   item.release_date?.substring(0, 4)}
+              </p>
+              <p className="overview">
+                Adult :{" "}
+                {`${item.adult === false ?' False':' True'}`}
               </p>
               <p className="overview">{item.overview}</p>
               <div className="cast">

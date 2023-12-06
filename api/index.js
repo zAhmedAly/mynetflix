@@ -13,12 +13,14 @@ dotenv.config();
 PORT = process.env.PORT || 8800;
 
 mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-  })
-  .then(() => console.log("DB Connection Successfull"))
+  .connect(process.env.MONGO_URL, 
+  //  {
+  //  useNewUrlParser: true,
+  //  useUnifiedTopology: true,
+   // useCreateIndex: true,
+  //}
+  )
+  .then(() => console.log("DB Connection Successful"))
   .catch((err) => {
     console.error(err);
   });
