@@ -387,3 +387,22 @@ systemctl status certbot.timer
 ```
 sudo ss -tulpn | grep LISTEN
 ```
+### Stop and disable the snapd service:
+```
+sudo systemctl stop snapd.service
+```
+```
+sudo systemctl disable snapd.service
+```
+```
+sudo systemctl stop snapd.socket
+```
+```
+sudo systemctl disable snapd.socket
+```
+```
+sudo systemctl stop snapd.seeded.service
+```
+```
+sudo systemctl disable snapd.seeded.service
+```
