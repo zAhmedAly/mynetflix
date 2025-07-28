@@ -6,7 +6,7 @@
 
 # Connecting to the VPS
 
-To connect your VPS server, you can use your server IP, you can create a root password and enter the server with your IP address and password credentials. But the more secure way is using an SSH key.
+To connect your VPS server, you can use your server's IP address, create a root password, and then enter the server using your IP address and password credentials. However, a more secure method is to use an SSH key.
 
 ## Creating SSH Key
 
@@ -14,7 +14,7 @@ To connect your VPS server, you can use your server IP, you can create a root pa
 
 1. Launch the Terminal app.
 2. `ssh-keygen -t rsa`
-3. Press `ENTER` to store the key in the default folder /Users/lamadev/.ssh/id_rsa).
+3. Press `ENTER` to store the key in the default folder /Users/lamadev/.ssh/id_rsa.
 
 4. Type a passphrase (characters will not appear in the terminal).
 
@@ -44,14 +44,14 @@ The key's randomart image is:
 ### For Windows
 
 1. Download PuTTY and PuTTYgen.
-2. Open up PuTTYgen and click the `Generate`.
+2. Open up PuTTYgen and click `Generate`.
 3. Copy your key.
 4. Enter a key passphrase and confirm.
 5. Save the private key.
 
 ## Connection
 
-After copying the SSH Key go the to hosting service provider dashboard and paste your key and save. After,
+After copying the SSH Key, go to the hosting service provider dashboard and paste your key and save. After,
 
 ### For MAC OS / Linux
 
@@ -69,7 +69,7 @@ ssh root@<server ip address>
 
 ## First Configuration
 
-### Deleting apache server
+### Deleting Apache server
 
 ```
 systemctl stop apache2
@@ -89,7 +89,7 @@ to delete related dependencies:
 apt autoremove
 ```
 
-### Cleaning and updating server
+### Cleaning and updating the server
 
 ```
 apt clean all && sudo apt update && sudo apt dist-upgrade
@@ -105,7 +105,7 @@ rm -rf /var/www/html
 apt install nginx
 ```
 
-### Installing and configure Firewall
+### Installing and configuring the Firewall
 
 ```
 apt install ufw
@@ -160,7 +160,7 @@ ln -s /etc/nginx/sites-available/netflix /etc/nginx/sites-enabled/netflix
 
 ```
 
-##### Write your fist message
+##### Write your first message
 
 ```
 nano /var/www/netflix/index.html
@@ -208,7 +208,7 @@ location /api {
   }
 ```
 
-##### If you check the location /api you are going to get "502" error which is good. Our configuration works. The only thing we need to is running our app
+##### If you check the location /api, you are going to get a "502" error, which is good. Our configuration works. The only thing we need to do is run our app
 
 ```
 apt install nodejs
@@ -236,7 +236,7 @@ nano .env
 node index.js
 ```
 
-#### But if you close your ssh session here. It's gonna kill this process. To prevent this we are going to need a package which is called `pm2`
+#### But if you close your SSH session here. It's gonna kill this process. To prevent this, we are going to need a package called `pm2`
 
 ```
 npm i -g pm2
@@ -366,7 +366,7 @@ server {
 apt install certbot python3-certbot-nginx
 ```
 
-Make sure that Nginx Full rule is available
+Make sure that the Nginx Full rule is available
 
 ```
 ufw status
@@ -380,4 +380,10 @@ Let’s Encrypt’s certificates are only valid for ninety days. To set a timer 
 
 ```
 systemctl status certbot.timer
+```
+
+### LINUX LIST used ports
+
+```
+sudo ss -tulpn | grep LISTEN
 ```
